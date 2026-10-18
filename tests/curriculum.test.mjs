@@ -18,8 +18,8 @@ test("sillabo completo: 10 livelli, 60 unità e quaderno",()=>{
   }
 });
 test("nome proprio solo parametro locale",()=>{
-  assert.ok(personalizedItems(LESSONS[0],"MANUEL").includes("MANUEL"));
-  assert.deepEqual(personalizedItems(LESSONS[1],"MANUEL"),["M","A","N","U","E","L"]);
+  assert.ok(personalizedItems(LESSONS[0],"MARCO").includes("MARCO"));
+  assert.deepEqual(personalizedItems(LESSONS[1],"MARCO"),["M","A","R","C","O"]);
   assert.deepEqual(personalizedItems(LESSONS[1],"ALEX"),["A","L","E","X"]);
 });
 test("tutte le attività hanno opzioni verificabili",()=>{
@@ -43,7 +43,7 @@ test("tutte le attività hanno opzioni verificabili",()=>{
   }
 });
 test("consonanti isolate in U02 non pronunciate con TTS come fonemi",()=>{
-  const tasks=makeActivities(LESSONS[1],"MANUEL",rng(22));
+  const tasks=makeActivities(LESSONS[1],"MARCO",rng(22));
   assert.equal(tasks.some(t=>["listen","read","typing"].includes(t.type)),false);
   assert.equal(tasks.filter(t=>t.type==="visual").length,3);
 });
