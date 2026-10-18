@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f5">
+  <title>m_app — Prova audio</title>
+  <style>
+    :root { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:#111318; background:#f7f7f5; }
+    * { box-sizing:border-box; } body { margin:0; }
+    main { max-width:680px; margin:auto; padding:28px 20px 60px; }
+    .eyebrow {font-size:.78rem; letter-spacing:.13em; text-transform:uppercase; color:#60646c; font-weight:750;}
+    h1 {font-size:clamp(2rem,8vw,3.6rem); line-height:1; letter-spacing:-.06em; margin:12px 0 16px;}
+    p {line-height:1.5; color:#525866; font-size:.98rem;}
+    .panel {background:white; border:1px solid #dedede; border-radius:16px; margin:14px 0; padding:20px;}
+    .label {font-size:.8rem; font-weight:700; color:#70747b; text-transform:uppercase; letter-spacing:.08em;}
+    .sample {font-size:clamp(2rem,10vw,3.6rem); font-weight:750; letter-spacing:-.03em; margin:12px 0 18px;}
+    button {border:0; border-radius:10px; padding:14px 20px; min-height:48px; background:#1e2838; color:white; font:inherit; font-weight:650; cursor:pointer;}
+    button:focus-visible {outline:3px solid #627edc; outline-offset:2px;}
+    button:disabled {opacity:.5;}
+    .muted {font-size:.85rem; color:#6d747b;} #status {min-height:3em;}
+    .head {display:flex; gap:14px; align-items:center; justify-content:space-between;}
+    .head button {background:#e5e8ed; color:#222; padding:10px 14px;}
+  </style>
+</head>
+<body><main>
+  <div class="head"><div class="eyebrow">m_app / Laboratorio audio</div><button id="stop" type="button">Interrompi</button></div>
+  <h1>Leggere. Ascoltare. Scrivere.</h1>
+  <p>Prova la voce del telefono. Premi <strong>Ascolta</strong> su ogni esempio. La consonante isolata non viene pronunciata come nome della lettera: iniziamo dalle sillabe.</p>
+  <div class="panel"><div class="label">01 — Vocale</div><div class="sample">A</div><button data-speak="a" data-kind="syllable">Ascolta A</button></div>
+  <div class="panel"><div class="label">02 — Sillaba</div><div class="sample">MA</div><button data-speak="ma" data-kind="syllable">Ascolta MA</button></div>
+  <div class="panel"><div class="label">03 — Parola</div><div class="sample">MANO</div><button data-speak="mano" data-kind="word">Ascolta MANO</button></div>
+  <div class="panel"><div class="label">04 — Frase</div><div class="sample" style="font-size:2.1rem">Sono a scuola.</div><button data-speak="Sono a scuola." data-kind="sentence">Ascolta la frase</button></div>
+  <div class="panel"><div class="label">05 — Dettato sul quaderno</div><div class="sample" style="font-size:1.7rem">Scrivi la parola che ascolti.</div><button data-speak="mano" data-kind="dictation">Ascolta il dettato</button><p class="muted">La soluzione resta nascosta. Questa è una prova audio, non un correttore automatico del quaderno.</p></div>
+  <p id="status" role="status" aria-live="polite">Tocca un pulsante per provare l'audio.</p>
+  <p class="muted">Non sono richiesti microfono, account o registrazioni. Alcune voci dipendono dalle impostazioni del dispositivo. Prova con volume udibile e senza cuffie se consentito.</p>
+</main>
+<script>
+(() => {
+  "use strict";
+  const status = document.querySelector("#status");
+  const supported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  let selectedVoice = null;
+  function updateVoices() {
+    if (!supported) return;
+    const voices = window.speechSynthesis.getVoices();
+    selectedVoice = voices.find(v => v.lang.toLowerCase() === "it-it") ||
+      voices.find(v => v.lang.toLowerCase().startsWith("it")) || null;
+  }
+  if (supported) {
+    updateVoices();
+    window.speechSynthesis.addEventListener?.("voiceschanged", updateVoices);
+  } else status.textContent = "Il browser non supporta la sintesi vocale.";
+  for (const button of document.querySelectorAll("[data-speak]")) {
+    button.disabled = !supported;
+    button.addEventListener("click", () => {
+      if (!supported) return;
+      updateVoices();
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(button.dataset.speak);
+      utterance.lang = "it-IT";
+      if (selectedVoice) utterance.voice = selectedVoice;
+      utterance.rate = button.dataset.kind === "sentence" ? 0.95 : 0.85;
+      utterance.pitch = 1;
+      utterance.onstart = () => status.textContent = "Riproduzione in corso.";
+      utterance.onend = () => status.textContent = "Audio terminato.";
+      utterance.onerror = ev => status.textContent = "Audio non disponibile (" + ev.error + "). Verifica le impostazioni vocali.";
+      status.textContent = "Avvio della voce italiana…";
+      window.speechSynthesis.speak(utterance);
+    });
+  }
+  document.querySelector("#stop").addEventListener("click", () => {
+    if (supported) window.speechSynthesis.cancel();
+    status.textContent = "Audio interrotto.";
+  });
+})();
+</script>
+</body></html>
