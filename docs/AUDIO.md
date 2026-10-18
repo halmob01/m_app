@@ -3,7 +3,7 @@
 Il docente NON deve registrare suoni o parole. Nessun servizio esterno a pagamento.
 
 ## MVP: sintesi vocale del dispositivo
-Usiamo Web Speech API (speechSynthesis e SpeechSynthesisUtterance), con lingua it-IT, preferenza per una voce italiana e attivazione mediante tocco. Serve per vocali, sillabe pronunciate naturalmente, parole, frasi, consegne e dettati. Non c'è upload delle parole e non serve account API. La disponibilità offline e la voce effettiva dipendono dal telefono: verificare sul dispositivo.
+Usiamo Web Speech API (speechSynthesis e SpeechSynthesisUtterance), con lingua it-IT, preferenza per una voce italiana e attivazione mediante tocco. Serve per vocali, sillabe pronunciate naturalmente, parole, frasi, consegne e dettati. L'app non invia esplicitamente le parole a un servizio vocale; il browser o il sistema operativo possono utilizzare servizi propri per generare le voci. Non serve un account API dell'app. La disponibilità offline e la voce effettiva dipendono dal telefono: verificare sul dispositivo.
 
 L'interfaccia tiene separati: istruzione parlata, lettura guidata, lettura autonoma e dettato. Per la lettura autonoma NON pronuncia la parola prima del tentativo; per i dettati nasconde la parola durante l'ascolto; audio sempre manuale con pulsante «Ascolta».
 
@@ -26,7 +26,7 @@ Il nome personale noto è un punto di partenza motivante, non prova della capaci
 - Gestire errori e assenza di voci senza bloccare gli esercizi.
 - Nessuna lettura automatica ad ogni nuova schermata, nessuna musica o effetti.
 - Distinzione fra audio della consegna e audio che rivela la soluzione.
-- Nessuna registrazione, nessun invio di audio o dati dello studente a servizi terzi.
+- Nessuna registrazione né invio intenzionale di progressi a servizi esterni da parte dell'app. Il trattamento del testo da parte delle voci del dispositivo dipende dalle impostazioni e dal fornitore della voce.
 - Non dichiarare «offline garantito» fino a prova su telefono reale.
 
 ## Alternativa se il TTS non funziona bene
