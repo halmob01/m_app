@@ -118,8 +118,9 @@ test("ogni unità include un'attività pittogramma, senza anticipare prove di le
 });
 test("posizione di risposta visiva cambia nelle prove ripetute",()=>{
   const positions=new Set();
-  for(let i=1;i<=40;i++){
-    const [task]=pictureActivitiesFor(43,rng(i));
+  // Usa campioni distribuiti su tutto [0,1), non seed LCG consecutivi.
+  for(const value of [0,0.2,0.45,0.7,0.99]){
+    const [task]=pictureActivitiesFor(43,()=>value);
     positions.add(task.choices.indexOf(task.correct));
   }
   assert.ok(positions.size>=2);
