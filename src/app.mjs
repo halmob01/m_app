@@ -192,8 +192,9 @@ function unitView(main){
   const stage=el("section","stage");
   if(task.type==="visual")visualStage(stage,task);
   if(task.type==="picture-letter"||task.type==="picture-syllable")pictureStage(stage,task);
-  if(task.type==="picture-listen")pictureListenStage(stage,task);
+  if(task.type==="picture-listen"||task.type==="picture-match")pictureListenStage(stage,task);
   if(task.type==="picture-meaning")pictureMeaningStage(stage,task);
+  if(task.type==="picture-context")pictureContextStage(stage,task);
   if(task.type==="listen")listenStage(stage,task);
   if(task.type==="complete")completeStage(stage,task);
   if(task.type==="typing")typingStage(stage,task);
@@ -296,6 +297,22 @@ function pictureMeaningStage(stage,task){
   stage.append(audioButton("Leggi la frase e tocca il disegno giusto.","instruction"));
   stage.append(target(task.display,"long picture-sentence"));
   pictogramChoices(stage,task);
+  audioAlert(stage);
+}
+function pictureContextStage(stage,task){
+  // L'immagine fornisce il contesto, mentre la frase richiede scelta semantica.
+  // Non svelare la parola bersaglio nella consegna sonora.
+  stage.append(audioButton("Guarda il disegno. Leggi la frase e scegli la parola mancante.","instruction"));
+  const frame=el("div","pictogram-frame context-visual");
+  const image=el("img","pictogram-asset");
+  const path=pictogramPath(task.picture);
+  if(path)image.src=path;
+  image.alt=PICTOGRAMS[task.picture]?.alt||"Pittogramma";
+  image.decoding="async";
+  frame.append(image);
+  stage.append(frame);
+  stage.append(target(task.display,"long picture-sentence"));
+  choiceButtons(stage,task);
   audioAlert(stage);
 }
 function pictureStage(stage,task){
