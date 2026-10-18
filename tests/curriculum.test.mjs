@@ -119,7 +119,7 @@ test("60 su 60: una vera attività illustrata per unità, anche nel motore",()=>
 
 test("la posizione della risposta illustrata cambia nelle ripetizioni",()=>{
   const positions=new Set();
-  for(let n=1;n<=40;n++)positions.add(pictureActivitiesFor(43,rng(n))[0].choices.indexOf(PICTURE_PRACTICE[43][0].correct));
+  for(const value of [0,0.24,0.49,0.74,0.99])positions.add(pictureActivitiesFor(43,()=>value)[0].choices.indexOf(PICTURE_PRACTICE[43][0].correct));
   assert.ok(positions.size>1);
 });
 
