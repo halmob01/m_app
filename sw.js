@@ -1,5 +1,5 @@
 /* Static shell cache; no student data is cached in the service worker. */
-const CACHE="m_app_static_v2";
+const CACHE="m_app_static_v3";
 const SHELL=["./","./index.html","./src/styles.css","./src/app.mjs","./src/engine.mjs","./src/curriculum.mjs","./icon.svg","./manifest.webmanifest"];
 self.addEventListener("install",event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));
