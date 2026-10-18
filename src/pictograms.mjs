@@ -155,6 +155,10 @@ export const PICTOGRAMS=Object.freeze({
   "quaderno": {
     "filename": "quaderno.svg",
     "alt": "Un quaderno"
+  },
+  "modulo": {
+    "filename": "modulo.svg",
+    "alt": "Un modulo da compilare"
   }
 });
 
@@ -963,15 +967,15 @@ export const PICTURE_PRACTICE=Object.freeze({
   "58": [
     {
       "type": "picture-context",
-      "picture": "quaderno",
+      "picture": "modulo",
       "display": "Compilo il _____.",
-      "correct": "QUADERNO",
+      "correct": "MODULO",
       "choices": [
-        "QUADERNO",
-        "BIGLIETTO",
-        "TELEFONO"
+        "MODULO",
+        "FOGLIO",
+        "LIBRO"
       ],
-      "word": "QUADERNO"
+      "word": "MODULO"
     }
   ],
   "59": [
