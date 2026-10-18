@@ -72,3 +72,11 @@ Per GitHub Pages, dopo il merge e se la tua configurazione lo consente: **Settin
 3. Aggiungere tracce TTS pre-generate automaticamente e revisionate per suoni che il browser non pronuncia correttamente.
 4. Ripensare le unità che il ragazzo affronta con difficoltà grafo-motorie; non limitare l'avanzamento alla calligrafia.
 5. Aggiornare service worker version a ogni release che modifica i file statici.
+
+
+## Voce neurale italiana (nuova)
+L'interfaccia ora può riprodurre **MP3 neurali Piper/Paola generati automaticamente** durante il deployment GitHub Actions, anziché usare esclusivamente la voce sintetica predefinita del telefono. Non è necessaria alcuna registrazione. Dall'area docenti si può passare alla voce del dispositivo, ascoltare un esempio o modificarne la velocità. Le clip personalizzate o assenti usano il TTS del browser come fallback.
+
+**Importante:** per pubblicare effettivamente i file audio aprire **GitHub Settings → Pages → Source: GitHub Actions** dopo il merge, quindi controllare che il workflow **Audio neurale e pubblicazione Pages** sia riuscito. Finché non si esegue e non completa con successo, il sito continua a usare la voce precedente. Il modello non viene scaricato sullo smartphone.
+
+Manuale completo, licenze e verifica fonetica: [docs/NEURAL_AUDIO.md](docs/NEURAL_AUDIO.md).

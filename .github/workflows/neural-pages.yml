@@ -1,0 +1,106 @@
+name: Audio neurale e pubblicazione Pages
+
+on:
+  pull_request:
+    paths:
+      - "scripts/**"
+      - "src/**"
+      - ".github/workflows/neural-pages.yml"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-neural-tts
+  cancel-in-progress: false
+
+jobs:
+  audio-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements-audio.txt
+      - name: Verify lesson data and browser modules
+        run: npm run check
+      - name: Generate voice inventory
+        run: node scripts/voice-inventory.mjs
+      - name: Restore reusable audio clips
+        uses: actions/cache@v4
+        with:
+          path: audio/generated
+          key: piper-paola-audio-v1-${{ github.event_name }}-${{ hashFiles('audio/inventory.json') }}
+      - name: Install neural synthesis (runs on GitHub, not on the student's phone)
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-audio.txt
+          python -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())"
+      - name: Download and verify Piper Italian Paola voice
+        shell: bash
+        run: |
+          mkdir -p .voice
+          BASE="https://huggingface.co/rhasspy/piper-voices/resolve/main/it/it_IT/paola/medium"
+          curl -fLsS --retry 4 --retry-delay 3 "$BASE/it_IT-paola-medium.onnx" -o .voice/it_IT-paola-medium.onnx
+          curl -fLsS --retry 4 --retry-delay 3 "$BASE/it_IT-paola-medium.onnx.json" -o .voice/it_IT-paola-medium.onnx.json
+          echo "6fc918b5a0ea6137382833dddfa567bffbe6a5060c02043c87192ee59c04210c  .voice/it_IT-paola-medium.onnx" | sha256sum -c -
+      - name: Generate and validate compressed neural audio
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            LIMIT="--limit 12"
+          else
+            LIMIT=""
+          fi
+          python scripts/build-neural-audio.py \
+            --inventory audio/inventory.json \
+            --model .voice/it_IT-paola-medium.onnx \
+            --config .voice/it_IT-paola-medium.onnx.json \
+            --out audio/generated \
+            $LIMIT
+          python - <<'PY'
+          import json, pathlib
+          data=json.loads(pathlib.Path("audio/generated/manifest.json").read_text())
+          assert data["clips"], "No neural audio clips generated"
+          assert all((pathlib.Path("audio/generated")/name).stat().st_size>300 for name in data["clips"].values())
+          print("Validated audio clips:",len(data["clips"]))
+          PY
+      - name: Stage static site with packaged MP3s
+        if: github.event_name != 'pull_request'
+        run: |
+          mkdir -p _site/src _site/audio
+          cp index.html icon.svg manifest.webmanifest sw.js .nojekyll _site/
+          cp src/*.mjs src/styles.css _site/src/
+          cp -r audio/generated _site/audio/
+      - name: Configure GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: audio-site
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy static site and neural MP3 package
+        id: deployment
+        uses: actions/deploy-pages@v4
