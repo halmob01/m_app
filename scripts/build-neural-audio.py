@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build static compressed Piper audio for Traccia, without recording or student data.
 
-Requirements: piper-tts==1.8.0, ffmpeg on PATH, model ONNX + JSON.
+Requirements: piper-tts==1.6.0, ffmpeg on PATH, model ONNX + JSON.
 The generated audio may contain pronunciation imperfections. Review before classroom use.
 """
 from __future__ import annotations
@@ -32,6 +32,7 @@ def main():
     p.add_argument("--model",required=True)
     p.add_argument("--config",required=True)
     p.add_argument("--out",default="audio/generated")
+    p.add_argument("--limit",type=int,default=0,help="Generate only N entries for CI smoke testing")
     args=p.parse_args()
     raw=json.loads(Path(args.inventory).read_text(encoding="utf-8"))
     assert raw["version"]==1
@@ -39,7 +40,7 @@ def main():
     voice=PiperVoice.load(args.model,config_path=args.config)
     result={}
     size=0
-    entries=raw["entries"]
+    entries=raw["entries"][:args.limit] if args.limit else raw["entries"]
     log.info("Loaded %s, generating %d clips",args.model,len(entries))
     with tempfile.TemporaryDirectory() as scratch:
         wave_file=Path(scratch)/"temporary.wav"
