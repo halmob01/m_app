@@ -79,11 +79,11 @@ test("tutti i pittogrammi provengono da file SVG locali",()=>{
   const paths=new Set();
   for(const key of keys){
     const item=PICTOGRAMS[key];
-    assert.match(item.filename,/^[a-z-]+\\.svg$/);
+    assert.match(item.filename,/^[a-z-]+\.svg$/);
     assert.ok(item.alt,"Descrizione accessibile mancante per "+key);
     paths.add(item.filename);
     const content=readFileSync(new URL("../assets/pictograms/"+item.filename,import.meta.url),"utf8");
-    assert.match(content,/<svg\\b/);
+    assert.match(content,/<svg\b/);
   }
   assert.equal(paths.size,keys.length);
 });
