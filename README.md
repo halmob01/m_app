@@ -80,3 +80,6 @@ L'interfaccia ora può riprodurre **MP3 neurali Piper/Paola generati automaticam
 **Importante:** per pubblicare effettivamente i file audio aprire **GitHub Settings → Pages → Source: GitHub Actions** dopo il merge, quindi controllare che il workflow **Audio neurale e pubblicazione Pages** sia riuscito. Finché non si esegue e non completa con successo, il sito continua a usare la voce precedente. Il modello non viene scaricato sullo smartphone.
 
 Manuale completo, licenze e verifica fonetica: [docs/NEURAL_AUDIO.md](docs/NEURAL_AUDIO.md).
+
+## Pittogrammi per lettere e sillabe
+Le unità 11, 12, 13, 19, 21, 24, 32 e 37 includono un piccolo numero di esercizi visivi **immagine + lettera/sillaba mancante**. Sono utilizzati **10 SVG originali di Tabler Icons (licenza MIT)**, conservati localmente e disponibili nella cache offline. Il catalogo è in `src/pictograms.mjs`, la guida e attribuzione in `docs/PICTOGRAMS.md` e la licenza in `assets/pictograms/LICENSE`. Gli esercizi illustrati sono pratica assistita, non certificano la decodifica senza immagine.
