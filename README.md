@@ -7,7 +7,7 @@ Web app leggera per un percorso di **alfabetizzazione iniziale di un adolescente
 - Ricerca del livello di partenza accompagnata dal docente (non è una diagnosi o test normato).
 - Riconoscimento visivo, ascolto/scegli, lettera mancante, dettato facoltativo da tastiera, lettura senza audio iniziale, comprensione di frasi e testi.
 - Quaderno: mostra modello, nascondi, dettato e conclusione **autodichiarata**, da verificare manualmente.
-- Voce italiana tramite **Web Speech API** nativa del browser, avviata a tocco. Nessuna registrazione o chiave API.
+- Voce italiana tramite **Web Speech API** nativa del browser, avviata a tocco. Nessuna registrazione o chiave API dell'app; le voci possono dipendere dai servizi del dispositivo.
 - Dati e nome opzionale salvati solo in localStorage sul browser del dispositivo; nessuna telemetria o database.
 - Sessione interrotta riprendibile; possibilità di scegliere qualsiasi unità e ripeterla.
 - Area docente locale, **non protetta**: storico delle sessioni, esito digitale, indicazione manuale quaderno verificato, esportazione JSON e cancellazione dei dati.
@@ -60,7 +60,7 @@ Per GitHub Pages, dopo il merge e se la tua configurazione lo consente: **Settin
 
 ## Limiti da non confondere con funzioni completate
 - **Non sono presenti** riconoscimento vocale, scansione/valutazione della scrittura, account, sincronizzazione multipiattaforma, audio fonetici isolati sintetici revisionati, tutor AI o analytics remoti.
-- Il nome dello studente non compare nel codice. Qualsiasi profilo impostato localmente rimane tuttavia accessibile a chiunque usi quello stesso browser/dispositivo.
+- Il nome dello studente non compare nel codice. Qualsiasi profilo impostato localmente rimane tuttavia accessibile a chiunque usi quello stesso browser/dispositivo. L'app non trasmette esplicitamente nome o progressi; il motore TTS dell'OS/browser può dipendere dal fornitore del dispositivo.
 - Voce Web Speech, offline, navigazione, tastiera virtuale e interfaccia vanno provati **sull'iPhone reale** e con il ragazzo. Le voci italiane possono variare; non usare la pronuncia del nome di una consonante come se fosse il suo fonema.
 - Le 60 unità costituiscono una prima banca di contenuti completa e strutturata, **non un programma pedagogico validato**: la qualità dell'audio, la progressione fonografica, il lessico e il carico cognitivo richiedono revisione di un docente e calibrazione sul PEI. Non procedere alla lezione successiva solo perché l'app ha registrato un punteggio alto.
 - Il backend non esiste: si può usare un solo dispositivo e una sola installazione browser alla volta. Cancellare i dati Safari elimina i progressi senza backup.
