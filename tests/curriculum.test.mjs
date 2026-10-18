@@ -73,55 +73,54 @@ test("shuffle conserva gli elementi",()=>{
 });
 
 
-test("45 asset Tabler SVG locali, senza immagini remote e senza duplicati",()=>{
-  assert.equal(Object.keys(PICTOGRAMS).length,45);
-  const filenames=new Set();
-  for(const [name,item] of Object.entries(PICTOGRAMS)){
-    assert.match(item.filename,/^[a-z-]+\.svg$/);
-    assert.ok(item.alt && item.spoken,name);
-    filenames.add(item.filename);
-    const svg=readFileSync(new URL("../assets/pictograms/"+item.filename,import.meta.url),"utf8");
-    assert.match(svg,/<svg\b/);
+test("tutti i pittogrammi provengono da file SVG locali",()=>{
+  const keys=Object.keys(PICTOGRAMS);
+  assert.equal(keys.length,40);
+  const paths=new Set();
+  for(const key of keys){
+    const item=PICTOGRAMS[key];
+    assert.match(item.filename,/^[a-z-]+\\.svg$/);
+    assert.ok(item.alt,"Descrizione accessibile mancante per "+key);
+    paths.add(item.filename);
+    const content=readFileSync(new URL("../assets/pictograms/"+item.filename,import.meta.url),"utf8");
+    assert.match(content,/<svg\\b/);
   }
-  assert.equal(filenames.size,45);
+  assert.equal(paths.size,keys.length);
 });
-test("ogni unità include un'attività pittogramma, senza anticipare prove di lettura",()=>{
+
+test("tutte le 60 unità contengono esattamente un'attività illustrata",()=>{
   assert.equal(Object.keys(PICTURE_PRACTICE).length,60);
   for(let id=1;id<=60;id++){
-    const raw=PICTURE_PRACTICE[id];
-    assert.ok(Array.isArray(raw)&&raw.length>0,"Unità senza pittogramma: "+id);
-    const tasks=makeActivities(LESSONS[id-1],"ALEX",rng(id));
-    const pictureTasks=tasks.filter(x=>x.type.startsWith("picture-"));
-    assert.ok(pictureTasks.length>0,"Unità con motore senza pittogramma: "+id);
-    for(const task of pictureTasks){
-      assert.equal(task.choices.length,3);
-      assert.equal(new Set(task.choices).size,3);
-      assert.ok(task.choices.includes(task.correct));
-      assert.equal(checkChoice(task,task.correct),true);
-      if(id<=10){
-        assert.equal(task.type,"picture-listen");
-        assert.ok(task.choices.every(key=>PICTOGRAMS[key]));
-      }else if(id<=36){
-        assert.ok(["picture-listen","picture-letter","picture-syllable"].includes(task.type));
-        if(task.type==="picture-letter"||task.type==="picture-syllable"){
-          assert.ok(task.choices.every(x=>x.length===task.correct.length));
-          assert.equal((task.display.match(/_/g)||[]).length,task.correct.length);
-          assert.equal(task.display.replace(/_+/,task.correct),task.word);
-        }
-      }else{
-        assert.equal(task.type,"picture-meaning");
-        assert.ok(task.display?.trim());
-        assert.ok(task.choices.every(key=>PICTOGRAMS[key]));
-      }
+    const items=PICTURE_PRACTICE[id];
+    assert.ok(Array.isArray(items)&&items.length===1,"Copertura U"+id);
+    const task=pictureActivitiesFor(id,rng(id))[0];
+    assert.ok(PICTOGRAMS[task.picture],"Icona mancante U"+id);
+    assert.equal(task.choices.length,3);
+    assert.equal(new Set(task.choices).size,3);
+    assert.ok(task.choices.includes(task.correct));
+    assert.equal(checkChoice(task,task.correct),true);
+    const generated=makeActivities(LESSONS[id-1],"ALEX",rng(id));
+    assert.equal(generated.filter(x=>x.type.startsWith("picture-")).length,1);
+    if(id<=10){
+      assert.equal(task.type,"picture-match");
+      assert.ok(task.choices.every(x=>PICTOGRAMS[x]));
+    }else if(id<=36){
+      assert.ok(["picture-letter","picture-syllable"].includes(task.type));
+      assert.equal((task.display.match(/_/g)||[]).length,task.correct.length);
+      assert.equal(task.display.replace(/_+/,task.correct),task.word);
+      assert.ok(task.choices.every(x=>x.length===task.correct.length));
+    }else{
+      assert.equal(task.type,"picture-context");
+      assert.equal((task.display.match(/_/g)||[]).length,5);
+      assert.ok(task.choices.every(x=>typeof x==="string"&&x.length>0));
+      assert.ok(task.display.length<=45);
     }
   }
 });
-test("posizione di risposta visiva cambia nelle prove ripetute",()=>{
-  const positions=new Set();
-  // Usa campioni distribuiti su tutto [0,1), non seed LCG consecutivi.
+test("le scelte illustrate cambiano posizione nelle ripetizioni",()=>{
+  const locations=new Set();
   for(const value of [0,0.2,0.45,0.7,0.99]){
-    const [task]=pictureActivitiesFor(43,()=>value);
-    positions.add(task.choices.indexOf(task.correct));
+    locations.add(pictureActivitiesFor(43,()=>value)[0].choices.indexOf("MESSAGGIO"));
   }
-  assert.ok(positions.size>=2);
+  assert.ok(locations.size>=2);
 });
