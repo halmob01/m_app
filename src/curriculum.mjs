@@ -97,7 +97,7 @@ const READING_QUESTIONS = {
   51:[["Che cosa prende dopo essere uscito?","il bus","la bici","il treno"],["Dove arriva?","a scuola","al cinema","a casa"]],
   52:[["Di che colore è la penna?","blu","nera","rossa"]],
   53:[["Che cosa ha la scuola?","molte aule","un cinema","una piscina"]],
-  54:[["Quale frase comincia con la maiuscola e finisce con il punto?","Oggi vado a scuola.","oggi vado a scuola.","Oggi vado a scuola"]],
+  54:[["Quale frase termina con il punto?","Oggi vado a scuola.","Oggi vado a scuola?","Oggi vado a scuola"]],
   55:[["Dove va Marco?","al lavoro","al parco","a scuola"],["A che ora arriva?","alle otto","alle nove","alle dieci"]],
   56:[["A che ora propone l'incontro?","alle 17","alle 15","alle 19"]],
   57:[["Che cosa devi scrivere?","la data","un messaggio","un numero"]],
