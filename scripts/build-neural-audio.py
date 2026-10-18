@@ -15,6 +15,7 @@ import tempfile
 import wave
 from pathlib import Path
 from piper import PiperVoice
+from imageio_ffmpeg import get_ffmpeg_exe
 
 log=logging.getLogger("piper-audio")
 logging.basicConfig(level=logging.INFO,format="%(levelname)s: %(message)s")
@@ -53,7 +54,7 @@ def main():
                 with wave.open(str(wave_file),"wb") as handle:
                     voice.synthesize_wav(text,handle)
                 subprocess.run([
-                    "ffmpeg","-nostdin","-hide_banner","-loglevel","error","-y",
+                    get_ffmpeg_exe(),"-nostdin","-hide_banner","-loglevel","error","-y",
                     "-i",str(wave_file),"-ar","22050","-ac","1",
                     "-codec:a","libmp3lame","-b:a","40k",
                     str(dst)
