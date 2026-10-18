@@ -37,6 +37,11 @@ jobs:
         run: npm run check
       - name: Generate voice inventory
         run: node scripts/voice-inventory.mjs
+      - name: Restore reusable audio clips
+        uses: actions/cache@v4
+        with:
+          path: audio/generated
+          key: piper-paola-audio-v1-${{ github.event_name }}-${{ hashFiles('audio/inventory.json') }}
       - name: Install neural synthesis (runs on GitHub, not on the student's phone)
         run: |
           python -m pip install --upgrade pip
