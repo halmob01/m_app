@@ -1,5 +1,6 @@
 import { LEVELS, LESSONS, personalizedItems, validateCurriculum } from "./curriculum.mjs";
 import { makeActivities, checkChoice, scoreSession } from "./engine.mjs";
+import { PICTOGRAMS, pictogramPath } from "./pictograms.mjs";
 import { createNeuralPlayer } from "./neural-audio.mjs";
 
 const STORE = "m_app_local_v1"; // Keep the existing key: preserve installed students' progress.
@@ -190,6 +191,7 @@ function unitView(main){
   progressLine(main,ui.index,ui.tasks.length);
   const stage=el("section","stage");
   if(task.type==="visual")visualStage(stage,task);
+  if(task.type==="picture-letter"||task.type==="picture-syllable")pictureStage(stage,task);
   if(task.type==="listen")listenStage(stage,task);
   if(task.type==="complete")completeStage(stage,task);
   if(task.type==="typing")typingStage(stage,task);
@@ -244,6 +246,22 @@ function visualStage(stage,task){
 function listenStage(stage,task){
   stage.append(audioButton(task.readout,task.readout.length>24?"sentence":"word"));
   stage.append(el("div","audio-spacer"));
+  choiceButtons(stage,task);
+  audioAlert(stage);
+}
+function pictureStage(stage,task){
+  // Il pittogramma guida il riconoscimento della parola, non sostituisce
+  // una prova indipendente di lettura: la parola intera non viene pronunciata.
+  stage.append(audioButton("Guarda il disegno. Scegli la lettera o la sillaba che manca.","instruction"));
+  const holder=el("div","pictogram-frame");
+  const image=el("img","pictogram-asset");
+  const path=pictogramPath(task.picture);
+  if(path)image.src=path;
+  image.alt=PICTOGRAMS[task.picture]?.alt||"Pittogramma";
+  image.decoding="async";
+  append(holder,image);
+  stage.append(holder);
+  stage.append(target(task.display,"pictogram-target"));
   choiceButtons(stage,task);
   audioAlert(stage);
 }
