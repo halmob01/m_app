@@ -58,6 +58,8 @@ export function makeActivities(lesson,name="",random=Math.random) {
       arr.push({type:"visual",prompt:"Trova lo stesso segno.",display:word,
         correct:word,choices:makeChoices(word,terms,random)});
     }
+    // Nei primi livelli la figura si associa alla parola ascoltata, senza richiedere lettura.
+    arr.push(...pictureActivitiesFor(lesson.id,random));
     if(lesson.id===1)arr.push({type:"read",prompt:"Leggi il tuo nome.",display:usable[0],readout:usable[0],correct:null,choices:[]});
     arr.push({type:"notebook",prompt:lesson.notebook,readout:null,correct:null});
     return arr;
@@ -107,7 +109,7 @@ export function makeActivities(lesson,name="",random=Math.random) {
 }
 
 export function checkChoice(activity,answer) {
-  if(!["visual","listen","complete","comprehension","typing","picture-letter","picture-syllable"].includes(activity?.type))return null;
+  if(!["visual","listen","complete","comprehension","typing","picture-letter","picture-syllable","picture-listen","picture-meaning","picture-match","picture-context","picture-audio","picture-choice"].includes(activity?.type))return null;
   return normalized(answer)===normalized(activity.correct);
 }
 

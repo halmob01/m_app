@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {LESSONS,LEVELS,personalizedItems,validateCurriculum} from "../src/curriculum.mjs";
 import {makeActivities,makeChoices,checkChoice,scoreSession,shuffle} from "../src/engine.mjs";
-import {PICTOGRAMS, PICTURE_PRACTICE, pictureActivitiesFor} from "../src/pictograms.mjs";
+import {PICTOGRAMS, PICTURE_PRACTICE, pictureActivitiesFor, validatePicturePractice} from "../src/pictograms.mjs";
 import {readFileSync} from "node:fs";
 
 function rng(seed=17){
@@ -30,7 +30,7 @@ test("tutte le attività hanno opzioni verificabili",()=>{
     assert.ok(tasks.length>=4,"Unità "+lesson.id+": troppo poche attività");
     assert.equal(tasks.filter(t=>t.type==="notebook").length,1);
     for(const task of tasks){
-      if(["visual","listen","complete","comprehension","picture-letter","picture-syllable"].includes(task.type)){
+      if(["visual","listen","complete","comprehension","picture-letter","picture-syllable","picture-listen","picture-meaning"].includes(task.type)){
         assert.equal(task.choices.length,3,"Unità "+lesson.id+": opzioni");
         assert.equal(new Set(task.choices).size,3,"Unità "+lesson.id+": doppioni");
         assert.equal(task.choices.filter(v=>v.toUpperCase()===task.correct.toUpperCase()).length,1);
@@ -72,45 +72,60 @@ test("shuffle conserva gli elementi",()=>{
   assert.deepEqual(shuffle(["A","B","C","D"],rng(8)).sort(),["A","B","C","D"]);
 });
 
-test("tutti e dieci gli asset Tabler sono inclusi, disponibili localmente e utilizzati",()=>{
-  const used=new Set(Object.values(PICTURE_PRACTICE).flat().map(x=>x.picture));
-  assert.equal(used.size,10);
-  assert.deepEqual([...used].sort(),Object.keys(PICTOGRAMS).sort());
-  for(const [name,item] of Object.entries(PICTOGRAMS)){
+
+
+test("asset illustrati: SVG locali per ogni figura del catalogo",()=>{
+  const keys=Object.keys(PICTOGRAMS);
+  assert.ok(keys.length>=30);
+  const paths=new Set();
+  for(const name of keys){
+    const item=PICTOGRAMS[name];
     assert.match(item.filename,/^[a-z-]+\.svg$/);
-    const body=readFileSync(new URL("../assets/pictograms/"+item.filename,import.meta.url),"utf8");
-    assert.match(body,/<svg\b/);
-    assert.ok(body.length>100,name+" asset troppo piccolo");
+    assert.ok(item.alt);
+    paths.add(item.filename);
+    const svg=readFileSync(new URL("../assets/pictograms/"+item.filename,import.meta.url),"utf8");
+    assert.match(svg,/<svg\b/);
+  }
+  assert.equal(paths.size,keys.length);
+});
+
+test("60 su 60: una vera attività illustrata per unità, anche nel motore",()=>{
+  assert.deepEqual(validatePicturePractice(),[]);
+  assert.equal(Object.keys(PICTURE_PRACTICE).length,60);
+  for(let id=1;id<=60;id++){
+    const unit=PICTURE_PRACTICE[id];
+    assert.equal(unit.length,1,"U"+id);
+    const task=pictureActivitiesFor(id,rng(id))[0];
+    assert.equal(new Set(task.choices).size,3,"U"+id);
+    assert.equal(checkChoice(task,task.correct),true,"U"+id);
+    const generated=makeActivities(LESSONS[id-1],"ALEX",rng(id));
+    assert.equal(generated.filter(t=>t.type.startsWith("picture-")).length,1,"U"+id);
+    assert.equal(generated.filter(t=>t.type==="notebook").length,1,"U"+id);
+    if(id<=10){
+      assert.equal(task.type,"picture-audio");
+      assert.ok(task.choices.every(v=>PICTOGRAMS[v]));
+      assert.ok(task.readout.startsWith("Tocca "));
+    }else if(id<=36){
+      assert.ok(["picture-letter","picture-syllable"].includes(task.type));
+      assert.equal(task.display.replace(/_+/,task.correct),task.word);
+      assert.equal((task.display.match(/_/g)||[]).length,task.correct.length);
+      assert.ok(task.choices.every(v=>v.length===task.correct.length));
+    }else{
+      assert.equal(task.type,"picture-choice");
+      assert.ok(task.choices.every(v=>typeof v==="string"&&v.length>=6));
+    }
   }
 });
-test("esercizi pittogrammi graduati con alternative bilanciate",()=>{
-  for(const [unit,items] of Object.entries(PICTURE_PRACTICE)){
-    const n=Number(unit);
-    assert.ok(n>=11,"Nessuna immagine prima delle sillabe apprese");
-    for(const item of items){
-      assert.ok(item.word.length>0);
-      assert.equal(item.choices.length,3);
-      assert.equal(item.choices.filter(x=>x===item.correct).length,1);
-      assert.ok(item.choices.every(x=>x.length===item.correct.length));
-      const missing=(item.display.match(/_/g)||[]).length;
-      assert.equal(missing,item.correct.length,"Maschera grafica incoerente");
-      assert.equal(item.display.replace(/_+/,item.correct),item.word,"Parola non ricostruibile");
-      const lesson=LESSONS[n-1];
-      assert.ok(lesson && lesson.level>=2,"Unità pittogramma non valida: "+unit);
-    }
-    const tasks=pictureActivitiesFor(n,rng(n));
-    assert.equal(tasks.length,items.length);
-    for(const t of tasks){
-      assert.equal(checkChoice(t,t.correct),true);
-      assert.equal(new Set(t.choices).size,3);
-      assert.equal(t.choices.indexOf(t.correct)>=0,true);
-    }
-  }
+
+test("la posizione della risposta illustrata cambia nelle ripetizioni",()=>{
+  const positions=new Set();
+  for(const value of [0,0.24,0.49,0.74,0.99])positions.add(pictureActivitiesFor(43,()=>value)[0].choices.indexOf(PICTURE_PRACTICE[43][0].correct));
+  assert.ok(positions.size>1);
 });
-test("nessuna immagine prematura nei livelli introduttivi",()=>{
-  for(let id=1;id<=10;id++){
-    assert.equal(pictureActivitiesFor(id).length,0);
-    const tasks=makeActivities(LESSONS[id-1],"ALEX",rng(id));
-    assert.equal(tasks.some(t=>t.type.startsWith("picture-")),false);
+
+test("nessun file remoto necessario per le figure",()=>{
+  for(const entry of Object.values(PICTOGRAMS)){
+    assert.ok(!entry.filename.includes("://"));
+    assert.ok(entry.filename.endsWith(".svg"));
   }
 });

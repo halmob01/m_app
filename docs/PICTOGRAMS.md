@@ -1,44 +1,42 @@
-# Pittogrammi per gli esercizi (prima selezione)
+# Pittogrammi in tutte le 60 unità — TRACCIA
 
-## Libreria scelta
+## Provenienza
+Gli SVG sono **asset già esistenti di Tabler Icons** (https://tabler.io/icons), disponibili con licenza **MIT**. Non sono immagini generate con IA né illustrazioni create a mano. Sono copiati localmente nella cartella `assets/pictograms/`. L'attribuzione e la licenza integrale si trovano in `assets/pictograms/LICENSE`. Le icone arrivano dal catalogo sorgente `tabler/tabler-icons/icons/outline/`.
 
-**Tabler Icons** — https://tabler.io/icons  
-Repository sorgente: https://github.com/tabler/tabler-icons  
-Licenza: **MIT**. Copia della licenza originale inclusa in `assets/pictograms/LICENSE`.
+La prima banca attiva contiene **33 pittogrammi** con gli stessi tratti grafici, non una libreria esterna caricata dal telefono. Nuove immagini richiedono controllo del significato, del livello e dell'attribuzione.
 
-La libreria offre icone vettoriali sobrie e coerenti, senza dipendere da API, CDN o servizi al momento dell'uso. Le copie statiche sono versionate nel repository; per rispettare la licenza conserviamo attribuzione e testo MIT. Non sono state generate nuove illustrazioni.
+## Tre famiglie, una attività illustrata in ogni unità
 
-## Asset attualmente importati
+| Unità | Tipo | Esperienza sul telefono | Valore didattico |
+|---|---|---|---|
+| U01–U10 | `picture-audio` | Ascolta una parola; scegli tra tre immagini grandi | Comprensione orale e familiarità col dispositivo, **non misura decodifica** |
+| U11–U36 | `picture-letter` / `picture-syllable` | Guarda un oggetto; completa una lettera o un gruppo nella parola | Rinforzo di grafemi e sillabe; alcune sono revisioni di parole già apprese |
+| U37–U60 | `picture-choice` | Guarda l'immagine; seleziona la frase che la descrive | Lettura funzionale e riconoscimento semantico, con distrattori plausibili |
 
-| Nome dell'oggetto | Icona Tabler | File locale |
-|---|---|---|
-| Mela | `apple` | `mela.svg` |
-| Mano | `hand-stop` | `mano.svg` |
-| Sole | `sun` | `sole.svg` |
-| Luna | `moon` | `luna.svg` |
-| Pane | `bread` | `pane.svg` |
-| Casa | `home` | `casa.svg` |
-| Cane | `dog` | `cane.svg` |
-| Dado | `dice-5` | `dado.svg` |
-| Treno | `train` | `treno.svg` |
-| Libro | `book` | `libro.svg` |
+La regola obbligatoria è **almeno una attività illustrata per ciascuna delle 60 unità**, verificata automaticamente nel test del sillabo. L'immagine non viene inserita in ogni singolo esercizio: lettura autonoma e quaderno mantengono prove prive di indizi iconografici.
 
-Origine dei file: `icons/outline/<nome-icon>.svg` nel repository Tabler. I file sono conservati con la loro definizione grafica originale.
+Gli esercizi con figura non valgono da soli come prova di padronanza della lettura. Una figura potrebbe permettere di indovinare senza decodificare; per questo rimangono compiti senza figura.
 
-## Attività integrate
+## Riconoscibilità e progressione
 
-Nel modulo `src/pictograms.mjs` è definita la relazione **lezione – parola – figura – maschera – tre scelte**. I task sono aggiunti dal motore agli esercizi previsti per le unità 11, 12, 13, 19, 21, 24, 32 e 37.
+- I primi 10 item usano tre immagini, **senza testo da leggere**.
+- Tra U11 e U36 la lunghezza del vuoto corrisponde esattamente a quella della soluzione, e tutte e tre le alternative hanno uguale lunghezza.
+- Nei livelli successivi le tre frasi sono ordinate casualmente e il pittogramma non fornisce l'intera soluzione per audio.
+- L'inventario della voce Piper integra anche le consegne illustrate e gli audio per gli oggetti usati nei primi livelli. La voce già approvata non viene cambiata.
+- Scegliere immagini che un adolescente riconosca rapidamente; verificare in particolare `hand-stop` (mano), `bread` (pane), `briefcase` (valigetta) e `shopping-cart` (spesa).
+- Non infantilizzare il sistema con mascotte, stimoli superflui o animazioni continue.
 
-Due tipologie: 
-- `picture-letter`: immagine + parola con **una lettera** mancante, con tre scelte di una lettera.
-- `picture-syllable`: immagine + parola con **una sillaba** mancante, con tre scelte della stessa lunghezza.
+## Struttura tecnica
 
-Il lato studente mostra: **pulsante Ascolta**, pittogramma grande, parola incompleta, tre pulsanti grandi. Il nome della figura non viene letto automaticamente, per non fornire involontariamente la risposta. La consegna invece è pronunciata. Non si devono pronunciare consonanti isolate attraverso un TTS che potrebbe leggerne il nome.
+- `src/pictograms.mjs`: mappa di 33 asset e banca di 60 compiti; esporta `validatePicturePractice`.
+- `src/engine.mjs`: inserimento del task illustrato in ciascuna lezione, rispettando il percorso base.
+- `src/app.mjs`: scelta tra immagini o tra lettere/sillabe/frasi sullo schermo studente.
+- `src/styles.css`: figure grandi, bottoni ad alto contrasto, superfici calde.
+- `sw.js`: cache PWA `m_app_static_v6` che include 33 SVG locali.
+- `scripts/voice-inventory.mjs`: inventario dei nuovi prompt pronunciati senza alterare il motore vocale.
 
-## Regole didattiche
+## Verifica prima della scuola
 
-Queste attività servono come **supporto visivo e pratica guidata**, non come verifica autonoma di decodifica: la figura potrebbe consentire di indovinare una parola memorizzata senza leggerla. Vanno alternate a prove senza immagine e ad attività sul quaderno.
+Provare sul vero iPhone almeno U01, U07, U11, U27, U34, U37, U49 e U60. Controllare comprensibilità delle figure, pronuncia, risposta su tre pulsanti, visibilità su schermi piccoli, salvataggio e riapertura dell'attività, quaderno. Rivedere con il docente le parole che anticipano contenuti troppo complessi.
 
-Alcune icone, come `hand-stop` e `bread`, devono essere validate con il ragazzo per verificare che riconosca l'oggetto senza ambiguità. Non vanno ampliate indiscriminatamente: usare soltanto elementi chiari, non infantili, e parole congruenti con il livello.
-
-Tutti gli asset SVG vengono memorizzati nella cache statica della PWA insieme al modulo: non si caricano immagini esterne durante gli esercizi. La sintesi vocale offline rimane separata e deve essere collaudata sul dispositivo.
+Se una figura risulta ambigua, sostituirla con altro asset Tabler appropriato, oppure usare temporaneamente un compito diverso: **non aggiungere disegni decorativi solo per raggiungere una quota**.
