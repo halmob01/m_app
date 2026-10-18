@@ -82,7 +82,7 @@ L'interfaccia ora può riprodurre **MP3 neurali Piper/Paola generati automaticam
 Manuale completo, licenze e verifica fonetica: [docs/NEURAL_AUDIO.md](docs/NEURAL_AUDIO.md).
 
 ## Pittogrammi nelle 60 unità e redesign TRACCIA
-Ogni unità U01–U60 contiene **un'attività visuale** graduata, realizzata con **40 pittogrammi SVG Tabler Icons** conservati localmente sotto licenza MIT. La voce approvata resta invariata.
+Ogni unità U01–U60 contiene **un'attività visuale** graduata, realizzata con **33 pittogrammi SVG Tabler Icons** conservati localmente sotto licenza MIT. La voce approvata resta invariata.
 
 - U01–U10: ascolto e selezione tra tre disegni, senza richiedere lettura.
 - U11–U36: una lettera o una sillaba mancante, con un pittogramma di supporto.
@@ -90,4 +90,4 @@ Ogni unità U01–U60 contiene **un'attività visuale** graduata, realizzata con
 
 Lettura autonoma e attività sul quaderno continuano a essere proposte senza indizi illustrati. L'interfaccia dello studente mostra soprattutto il livello, il pulsante di ascolto e le risposte grandi; i dettagli restano nell'area docente.
 
-Il redesign utilizza **Anton** e **Manrope**, superfici calde, navy e verde tenue, ispirandosi alla gerarchia visiva di design esaminati su [getdesign.md](https://getdesign.md/). Tutte le scelte e gli anti-pattern sono documentati in [DESIGN.md](DESIGN.md). Catalogo e linee guida di attribuzione in [docs/PICTOGRAMS.md](docs/PICTOGRAMS.md), testo MIT in [assets/pictograms/LICENSE](assets/pictograms/LICENSE). Gli asset usati dall'app sono inclusi nella cache della PWA **v8**.
+Il redesign utilizza **Anton** e **Manrope**, superfici calde, navy e verde tenue, ispirandosi alla gerarchia visiva di design esaminati su [getdesign.md](https://getdesign.md/). Tutte le scelte e gli anti-pattern sono documentati in [DESIGN.md](DESIGN.md). Catalogo e linee guida di attribuzione in [docs/PICTOGRAMS.md](docs/PICTOGRAMS.md), testo MIT in [assets/pictograms/LICENSE](assets/pictograms/LICENSE). Gli asset usati dall'app sono inclusi nella cache della PWA **v6**.
