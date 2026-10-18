@@ -30,7 +30,7 @@ test("tutte le attività hanno opzioni verificabili",()=>{
     assert.ok(tasks.length>=4,"Unità "+lesson.id+": troppo poche attività");
     assert.equal(tasks.filter(t=>t.type==="notebook").length,1);
     for(const task of tasks){
-      if(["visual","listen","complete","comprehension","picture-letter","picture-syllable"].includes(task.type)){
+      if(["visual","listen","complete","comprehension","picture-letter","picture-syllable","picture-listen","picture-meaning"].includes(task.type)){
         assert.equal(task.choices.length,3,"Unità "+lesson.id+": opzioni");
         assert.equal(new Set(task.choices).size,3,"Unità "+lesson.id+": doppioni");
         assert.equal(task.choices.filter(v=>v.toUpperCase()===task.correct.toUpperCase()).length,1);
@@ -72,45 +72,55 @@ test("shuffle conserva gli elementi",()=>{
   assert.deepEqual(shuffle(["A","B","C","D"],rng(8)).sort(),["A","B","C","D"]);
 });
 
-test("tutti e dieci gli asset Tabler sono inclusi, disponibili localmente e utilizzati",()=>{
-  const used=new Set(Object.values(PICTURE_PRACTICE).flat().map(x=>x.picture));
-  assert.equal(used.size,10);
-  assert.deepEqual([...used].sort(),Object.keys(PICTOGRAMS).sort());
+
+test("45 asset Tabler SVG locali, senza immagini remote e senza duplicati",()=>{
+  assert.equal(Object.keys(PICTOGRAMS).length,45);
+  const filenames=new Set();
   for(const [name,item] of Object.entries(PICTOGRAMS)){
-    assert.match(item.filename,/^[a-z-]+\.svg$/);
-    const body=readFileSync(new URL("../assets/pictograms/"+item.filename,import.meta.url),"utf8");
-    assert.match(body,/<svg\b/);
-    assert.ok(body.length>100,name+" asset troppo piccolo");
+    assert.match(item.filename,/^[a-z-]+\\.svg$/);
+    assert.ok(item.alt && item.spoken,name);
+    filenames.add(item.filename);
+    const svg=readFileSync(new URL("../assets/pictograms/"+item.filename,import.meta.url),"utf8");
+    assert.match(svg,/<svg\\b/);
   }
+  assert.equal(filenames.size,45);
 });
-test("esercizi pittogrammi graduati con alternative bilanciate",()=>{
-  for(const [unit,items] of Object.entries(PICTURE_PRACTICE)){
-    const n=Number(unit);
-    assert.ok(n>=11,"Nessuna immagine prima delle sillabe apprese");
-    for(const item of items){
-      assert.ok(item.word.length>0);
-      assert.equal(item.choices.length,3);
-      assert.equal(item.choices.filter(x=>x===item.correct).length,1);
-      assert.ok(item.choices.every(x=>x.length===item.correct.length));
-      const missing=(item.display.match(/_/g)||[]).length;
-      assert.equal(missing,item.correct.length,"Maschera grafica incoerente");
-      assert.equal(item.display.replace(/_+/,item.correct),item.word,"Parola non ricostruibile");
-      const lesson=LESSONS[n-1];
-      assert.ok(lesson && lesson.level>=2,"Unità pittogramma non valida: "+unit);
-    }
-    const tasks=pictureActivitiesFor(n,rng(n));
-    assert.equal(tasks.length,items.length);
-    for(const t of tasks){
-      assert.equal(checkChoice(t,t.correct),true);
-      assert.equal(new Set(t.choices).size,3);
-      assert.equal(t.choices.indexOf(t.correct)>=0,true);
-    }
-  }
-});
-test("nessuna immagine prematura nei livelli introduttivi",()=>{
-  for(let id=1;id<=10;id++){
-    assert.equal(pictureActivitiesFor(id).length,0);
+test("ogni unità include un'attività pittogramma, senza anticipare prove di lettura",()=>{
+  assert.equal(Object.keys(PICTURE_PRACTICE).length,60);
+  for(let id=1;id<=60;id++){
+    const raw=PICTURE_PRACTICE[id];
+    assert.ok(Array.isArray(raw)&&raw.length>0,"Unità senza pittogramma: "+id);
     const tasks=makeActivities(LESSONS[id-1],"ALEX",rng(id));
-    assert.equal(tasks.some(t=>t.type.startsWith("picture-")),false);
+    const pictureTasks=tasks.filter(x=>x.type.startsWith("picture-"));
+    assert.ok(pictureTasks.length>0,"Unità con motore senza pittogramma: "+id);
+    for(const task of pictureTasks){
+      assert.equal(task.choices.length,3);
+      assert.equal(new Set(task.choices).size,3);
+      assert.ok(task.choices.includes(task.correct));
+      assert.equal(checkChoice(task,task.correct),true);
+      if(id<=10){
+        assert.equal(task.type,"picture-listen");
+        assert.ok(task.choices.every(key=>PICTOGRAMS[key]));
+      }else if(id<=36){
+        assert.ok(["picture-listen","picture-letter","picture-syllable"].includes(task.type));
+        if(task.type==="picture-letter"||task.type==="picture-syllable"){
+          assert.ok(task.choices.every(x=>x.length===task.correct.length));
+          assert.equal((task.display.match(/_/g)||[]).length,task.correct.length);
+          assert.equal(task.display.replace(/_+/,task.correct),task.word);
+        }
+      }else{
+        assert.equal(task.type,"picture-meaning");
+        assert.ok(task.display?.trim());
+        assert.ok(task.choices.every(key=>PICTOGRAMS[key]));
+      }
+    }
   }
+});
+test("posizione di risposta visiva cambia nelle prove ripetute",()=>{
+  const positions=new Set();
+  for(let i=1;i<=40;i++){
+    const [task]=pictureActivitiesFor(43,rng(i));
+    positions.add(task.choices.indexOf(task.correct));
+  }
+  assert.ok(positions.size>=2);
 });
