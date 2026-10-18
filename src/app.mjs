@@ -4,7 +4,7 @@ import {makeActivities,checkChoice,scoreSession} from "./engine.mjs";
 const STORE="m_app_local_v1";
 const empty=()=>({profile:{name:"",setup:false},history:{},reviewed:{},active:null});
 let data=readStore();
-let current={view:"home",id:1,tasks:[],index:0,answered:false,tries:0,feedback:null,readStep:0,modelHidden:false,score:{correct:0,answered:0,independentRead:false,notebookDone:false}};
+let current={view:"home",id:1,tasks:[],index:0,answered:false,tries:0,feedback:null,readStep:0,modelHidden:false,typedText:"",score:{correct:0,answered:0,independentRead:false,notebookDone:false}};
 const root=document.getElementById("app");
 let audioStatus="";
 let voice=null;
@@ -150,13 +150,13 @@ function startLesson(id){
   const lesson=getLesson(id);
   if(!lesson)return;
   stopVoice();
-  current={...current,view:"unit",id:lesson.id,tasks:makeActivities(lesson,data.profile.name),index:0,answered:false,tries:0,feedback:null,readStep:0,modelHidden:false,score:{correct:0,answered:0,independentRead:false,notebookDone:false}};
+  current={...current,view:"unit",id:lesson.id,tasks:makeActivities(lesson,data.profile.name),index:0,answered:false,tries:0,feedback:null,readStep:0,modelHidden:false,typedText:"",score:{correct:0,answered:0,independentRead:false,notebookDone:false}};
   rememberDraft();
   render();scrollTop();
 }
 function rememberDraft(){
   if(current.view!=="unit")return;
-  data.active={id:current.id,tasks:current.tasks,index:current.index,answered:current.answered,tries:current.tries,feedback:current.feedback,readStep:current.readStep,modelHidden:current.modelHidden,score:current.score};
+  data.active={id:current.id,tasks:current.tasks,index:current.index,answered:current.answered,tries:current.tries,feedback:current.feedback,readStep:current.readStep,modelHidden:current.modelHidden,typedText:current.typedText,score:current.score};
   persist();
 }
 function resume(){
@@ -177,9 +177,11 @@ function unitScreen(main){
   const progress=e("div","progress");
   const fill=e("div");fill.style.width=(((current.index+1)/total)*100)+"%";progress.append(fill);main.append(progress);
   const c=card();
-  if(task.type==="listen")listenScreen(c,task);
+  if(task.type==="visual")visualScreen(c,task);
+  else if(task.type==="listen")listenScreen(c,task);
   else if(task.type==="complete")completeScreen(c,task);
   else if(task.type==="read")readScreen(c,task);
+  else if(task.type==="typing")typingScreen(c,task);
   else if(task.type==="comprehension")comprehensionScreen(c,task);
   else if(task.type==="notebook")notebookScreen(c,task,lesson);
   add(main,c);
@@ -201,16 +203,16 @@ function optionButtons(c,task){
   const options=e("div","choices");options.setAttribute("role","group");options.setAttribute("aria-label","Risposte possibili");
   for(const value of task.choices){
     const b=button(value,"choice",()=>answerChoice(task,value));
-    if(current.feedback&&current.feedback.value===value)b.classList.add(current.feedback.correct?"success":"error");
+    if(current.feedback&&current.feedback.value===value)b.classList.add((current.feedback.correct||current.feedback.revealed)?"success":"error");
     if(current.answered)b.disabled=true;
     options.append(b);
   }
   c.append(options);
   if(current.feedback){
     const good=current.feedback.correct;
-    const text=good?"Corretto. Puoi continuare.":current.tries>=2?"Non è corretto. Riprova oppure passa alla correzione.":"Non è corretto. Riprova.";
+    const text=current.feedback.revealed?"La risposta corretta è: "+task.correct+".":good?"Corretto. Puoi continuare.":current.tries>=2?"Non è corretto. Riprova oppure passa alla correzione.":"Non è corretto. Riprova.";
     c.append(e("div","feedback "+(good?"success":"error"),text));
-    if(!good&&current.tries>=2){
+    if(!good&&current.tries>=2&&!current.feedback.revealed){
       c.append(button("Mostra la risposta e continua","secondary wide",()=>{
         current.feedback={value:task.correct,correct:false,revealed:true};
         current.answered=true;nextButtonOnly();
@@ -230,6 +232,33 @@ function answerChoice(task,value){
   current.feedback={value,correct:good};
   current.answered=good;
   rememberDraft();render();
+}
+function visualScreen(c,task){
+  taskHeader(c,"01 / Riconoscimento","Trova lo stesso segno","Osserva e scegli l’elemento uguale. Non serve ascoltare lettere isolate.");
+  c.append(e("div","stimulus",task.display));
+  optionButtons(c,task);
+}
+function typingScreen(c,task){
+  taskHeader(c,"02 / Scrittura sul telefono","Scrivi dopo l’ascolto","Ascolta senza vedere la parola. Se la tastiera è faticosa, puoi saltare: scriverai sul quaderno.");
+  c.append(speakBtn(task.readout,"Ascolta il dettato",task.readout.length>20?"sentence":"word"));
+  if(audioStatus)c.append(e("div","feedback error",audioStatus));
+  const form=e("form");
+  const lab=e("label",null,"Scrivi qui ciò che hai ascoltato");lab.htmlFor="typed";
+  const input=e("input","field");input.id="typed";input.type="text";input.autocomplete="off";input.autocapitalize="characters";
+  input.spellcheck=false;input.value=current.typedText||"";
+  input.disabled=current.answered;
+  input.addEventListener("input",()=>{current.typedText=input.value;rememberDraft();});
+  const check=e("button","primary wide","Controlla");
+  check.type="submit";check.disabled=current.answered;
+  form.addEventListener("submit",event=>{event.preventDefault();if(!current.answered)answerChoice(task,input.value);});
+  add(form,lab,input,check);c.append(form);
+  if(current.feedback){
+    const message=current.feedback.revealed?"Risposta: "+task.correct:current.feedback.correct?"Corretto.":current.tries>=2?"Riprova oppure mostra la risposta.":"Non è corretto. Prova ancora.";
+    c.append(e("div","feedback "+(current.feedback.correct?"success":"error"),message));
+    if(!current.answered&&current.tries>=2)c.append(button("Mostra la risposta","secondary wide",()=>{current.feedback={value:task.correct,correct:false,revealed:true};current.answered=true;rememberDraft();render();}));
+  }
+  if(current.answered)nextButton(c);
+  else c.append(button("Salta la tastiera","text-button",advance));
 }
 function listenScreen(c,task){
   taskHeader(c,"01 / Ascolto","Quale parola senti?","Ascolta il suono. Poi scegli una risposta.");
@@ -287,7 +316,7 @@ function advance(){
   stopVoice();
   if(current.index>=current.tasks.length-1){finish();return;}
   current.index++;
-  current.answered=false;current.tries=0;current.feedback=null;current.readStep=0;current.modelHidden=false;
+  current.answered=false;current.tries=0;current.feedback=null;current.readStep=0;current.modelHidden=false;current.typedText="";
   rememberDraft();render();scrollTop();
 }
 function finish(){
