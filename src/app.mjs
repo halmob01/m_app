@@ -324,6 +324,8 @@ function finish(){
   const session={...current.score,endedAt:new Date().toISOString()};
   history.push(session);
   data.history[current.id]=history.slice(-20);
+  // Una nuova attività manuale richiede una nuova osservazione: non ereditare una verifica precedente.
+  data.reviewed[current.id]=false;
   data.active=null;
   persist();
   current.view="done";
@@ -339,7 +341,7 @@ function doneScreen(main){
   add(c,e("p",null,current.score.notebookDone?"Quaderno: attività dichiarata conclusa, in attesa di verifica.":"Quaderno: non registrato."),e("p",null,"Lettura: "+(current.score.independentRead?"lo studente dichiara di aver letto correttamente.":"da riprovare o verificare con l’insegnante.")));
   if(p.digitalTarget)add(c,e("div","feedback","Due sessioni digitali almeno all’85%, con una prova di lettura dichiarata autonoma. Non equivale a certificare la competenza."));
   const row=e("div","btn-row");
-  add(row,button("Ripeti l’unità","secondary",()=>startLesson(current.id)),button("Unità successiva","primary",()=>startLesson(Math.min(current.id+1,60))));
+  add(row,button("Ripeti l’unità","secondary",()=>startLesson(current.id)),button(current.id===60?"Torna al percorso":"Unità successiva","primary",()=>current.id===60?home():startLesson(current.id+1)));
   add(c,row);main.append(c);
   main.append(button("Torna al percorso","text-button",home));
 }
