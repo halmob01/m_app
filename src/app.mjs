@@ -192,6 +192,8 @@ function unitView(main){
   const stage=el("section","stage");
   if(task.type==="visual")visualStage(stage,task);
   if(task.type==="picture-letter"||task.type==="picture-syllable")pictureStage(stage,task);
+  if(task.type==="picture-audio")pictureAudioStage(stage,task);
+  if(task.type==="picture-choice")pictureSentenceStage(stage,task);
   if(task.type==="picture-listen"||task.type==="picture-match")pictureListenStage(stage,task);
   if(task.type==="picture-meaning")pictureMeaningStage(stage,task);
   if(task.type==="picture-context")pictureContextStage(stage,task);
@@ -312,6 +314,26 @@ function pictureContextStage(stage,task){
   frame.append(image);
   stage.append(frame);
   stage.append(target(task.display,"long picture-sentence"));
+  choiceButtons(stage,task);
+  audioAlert(stage);
+}
+function pictureAudioStage(stage,task){
+  // All'inizio non serve leggere: tre immagini, una parola pronunciata.
+  stage.append(audioButton(task.readout,"instruction"));
+  stage.append(el("div","picture-listening-cue"));
+  pictogramChoices(stage,task);
+  audioAlert(stage);
+}
+function pictureSentenceStage(stage,task){
+  stage.append(audioButton("Guarda il disegno. Scegli la frase giusta.","instruction"));
+  const frame=el("div","pictogram-frame context-visual");
+  const image=el("img","pictogram-asset");
+  const path=pictogramPath(task.picture);
+  if(path)image.src=path;
+  image.alt=PICTOGRAMS[task.picture]?.alt||"Pittogramma";
+  image.decoding="async";
+  frame.append(image);
+  stage.append(frame);
   choiceButtons(stage,task);
   audioAlert(stage);
 }
