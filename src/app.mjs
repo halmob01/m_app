@@ -151,11 +151,14 @@ function render(){
   const shell=el("div",ui.view==="teacher"?"shell teacher-shell":"shell pupil-shell");
   const header=el("header",ui.view==="teacher"?"topbar teacher-topbar":"topbar pupil-topbar");
   if(ui.view==="teacher"){
-    append(header,el("strong","brand wordmark","TRACCIA"),
+    append(header,el("strong","brand wordmark","MATITA"),
       btn("TORNA AGLI ESERCIZI","teacher-back",gotoStudent,{ico:"back"}));
   }else{
-    append(header,el("span","brandmark","T"),
-      btn("DOCENTI","teacher-visible-link",gotoTeacher,{ico:"settings",aria:"Apri area docenti"}));
+    // Il monogramma M rimane visibile in alto a destra, come richiesto.
+    // L'area docenti è un comando separato in alto a sinistra.
+    append(header,
+      btn("DOCENTI","teacher-visible-link",gotoTeacher,{ico:"settings",aria:"Apri area docenti"}),
+      el("span","brandmark student-monogram","M"));
   }
   const main=el("main");main.id="main";
   if(ui.view==="teacher")teacherView(main);
@@ -386,7 +389,7 @@ function typingStage(stage,task){
 function readStage(stage,task){
   stage.append(target(task.display,task.display.length>20?"long":""));
   if(ui.readStep===0){
-    stage.append(audioButton("Leggi da solo. Quando hai provato, tocca il pulsante avanti.","instruction"));
+    stage.append(audioButton("Prova a leggere. Poi premi avanti.","instruction"));
     stage.append(btn("AVANTI","primary next-btn",()=>{ui.readStep=1;activeSave();render();},{ico:"next"}));
   }else{
     stage.append(audioButton(task.readout,task.display.length>24?"sentence":"word"));
@@ -543,7 +546,7 @@ function teacherView(main){
 function exportProgress(){
   const payload=new Blob([JSON.stringify({schema:1,exportedAt:new Date().toISOString(),...data},null,2)],{type:"application/json"});
   const uri=URL.createObjectURL(payload);
-  const a=document.createElement("a");a.href=uri;a.download="traccia-progressi.json";
+  const a=document.createElement("a");a.href=uri;a.download="matita-progressi.json";
   document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(uri),2000);
 }
 function clearProgress(){
