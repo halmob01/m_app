@@ -320,3 +320,70 @@ body {
 /* Preserve the approved typographic pairing throughout all controls. */
 html,body,button,input {font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
 .level-title,.display-title,.wordmark,.teacher-title,.brandmark,.map-index {font-family:"Anton",Impact,sans-serif;}
+
+
+/* TRACCIA / studio refresh 02: getdesign.md references
+   - Lovable warm-paper surface, Mobbin selective high-contrast control language.
+   - Never add reading burden to the pupil interface. */
+:root{--bg:#f5f2eb;--paper:#fffefa;--accent:#234563;--signal:#fed887;}
+body{background:var(--bg);color:#192637;}
+.pupil-shell{max-width:740px;}
+.pupil-home{
+  background:#193752;
+  border-radius:30px;
+  min-height:min(690px,calc(100svh - 140px));
+  margin:20px 0 0;
+  padding:clamp(28px,7vw,56px);
+  position:relative;isolation:isolate;overflow:hidden;
+  box-shadow:0 16px 42px rgba(19,45,70,.16);
+}
+.pupil-home::before{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  width:330px;height:330px;border-radius:50%;
+  top:-165px;right:-160px;border:54px solid rgba(255,255,255,.07);
+}
+.pupil-home::after{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  width:250px;height:250px;border-radius:50%;
+  bottom:-155px;left:-100px;background:#264e6a;
+}
+.pupil-home .display-title{color:#fffef7;font-size:clamp(49px,11vw,80px);letter-spacing:.004em;line-height:1.06;}
+.pupil-home .student-level{
+  color:#234563!important;background:#e4eebc!important;
+  border-color:#e4eebc!important;letter-spacing:.13em;
+}
+.pupil-home .audio-btn{background:#fffef7;color:#193752;border-color:transparent;box-shadow:0 4px 0 rgba(0,0,0,.08);}
+.pupil-home .audio-btn::after{background:#193752;box-shadow:-13px 0 0 rgba(25,55,82,.32);}
+.pupil-home .audio-btn:hover{background:#f0f1eb;color:#193752;}
+.pupil-home .start-btn{background:#fed887;border-color:#fed887;color:#152c40;box-shadow:0 4px 0 #d1a854;}
+.pupil-home .start-btn:hover{background:#ffe4aa;color:#152c40;}
+.pupil-home .sound-error{color:#fff0de;}
+.stage{position:relative;border-radius:26px;box-shadow:0 12px 32px rgba(25,45,63,.075);border-color:#ebe3d7;}
+.stage::before{
+  content:"";height:5px;width:84px;border-radius:30px;
+  background:#ddbd75;position:absolute;top:0;left:calc(50% - 42px);
+}
+.pictogram-frame{background:#f0f1e8;border-color:#e1e5d9;min-height:206px;}
+.picture-options{gap:12px;}
+.picture-options .picture-choice{min-height:142px;background:#f0f3f0;}
+.picture-options .picture-choice:nth-child(2){background:#f4f0e8;}
+.picture-options .picture-choice:nth-child(3){background:#eef1f5;}
+.picture-options .picture-choice.right{background:#e8f4e7;}
+.picture-options .picture-choice.wrong{background:#faf0ec;}
+.picture-option-icon{width:100%;max-width:116px;height:116px;}
+.target.pictogram-target{background:#f6f5ee;}
+.stage .choice{min-height:75px;font-size:clamp(17px,4.5vw,26px);}
+.stage .choice.right{border-width:2px;}
+.stage .audio-btn{border-radius:18px;}
+.step-fill{background:#c68d41;}
+.teacher-shell .level-map{border-left:4px solid #dcb96b;}
+.teacher-shell .map-index{color:#234563;}
+@media(max-width:420px){
+  .pupil-home{margin:12px -3px 0;border-radius:23px;padding:28px 20px;}
+  .picture-options{gap:8px;}
+  .picture-options .picture-choice{min-height:107px;border-radius:14px;padding:7px;}
+  .picture-option-icon{height:84px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .pupil-home::before,.pupil-home::after{animation:none;}
+}
