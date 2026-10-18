@@ -6,11 +6,11 @@ const defaults = () => ({
   profile: {name:"",setup:false},
   history:{},reviewed:{},active:null,
   assignment:1,
-  preferences:{typing:false}
+  preferences:{typing:false,voiceURI:'',rate:1}
 });
 const root = document.querySelector("#app");
 let data = readStore();
-let ui = {view:"student", lesson:1, tasks:[], index:0, answered:false, tries:0,
+let ui = {view:location.hash==="#docenti"?"teacher":"student", lesson:1, tasks:[], index:0, answered:false, tries:0,
   feedback:null, readStep:0, modelHidden:false, typedText:"",
   score:{correct:0,answered:0,independentRead:false,notebookDone:false}};
 let audioMessage = "";
@@ -78,7 +78,7 @@ function speechAvailable(){return typeof window.speechSynthesis!=="undefined"&&t
 function selectVoice(){
   if(!speechAvailable())return;
   const voices=window.speechSynthesis.getVoices();
-  selectedVoice=voices.find(v=>v.lang?.toLowerCase()==="it-it")||voices.find(v=>v.lang?.toLowerCase().startsWith("it"))||null;
+  selectedVoice=voices.find(v=>v.voiceURI===data.preferences.voiceURI&&/^it/i.test(v.lang))||voices.find(v=>v.lang?.toLowerCase()==="it-it")||voices.find(v=>v.lang?.toLowerCase().startsWith("it"))||null;
 }
 if(speechAvailable()){
   selectVoice();
@@ -95,7 +95,7 @@ function say(text,kind="instruction"){
   const utterance=new SpeechSynthesisUtterance(String(text));
   utterance.lang="it-IT";
   if(selectedVoice)utterance.voice=selectedVoice;
-  utterance.rate=kind==="instruction"?0.96:kind==="sentence"?0.93:0.86;
+  utterance.rate=Number(data.preferences.rate)||1;
   utterance.pitch=1;
   utterance.onerror=()=>{audioMessage="Audio non disponibile. Controlla il volume e la voce italiana.";render();};
   speechSynthesis.speak(utterance);
@@ -107,8 +107,8 @@ function audioAlert(container){
   if(audioMessage)container.append(el("p","sound-error",audioMessage));
 }
 function page(view){stop();audioMessage="";ui.view=view;render();top();}
-function gotoTeacher(){page("teacher");}
-function gotoStudent(){page("student");}
+function gotoTeacher(){location.hash="docenti";page("teacher");}
+function gotoStudent(){history.replaceState(null,"",location.pathname+location.search);page("student");}
 function lesson(id){return LESSONS.find(l=>l.id===Number(id));}
 function progress(id){const sessions=data.history[id]||[];return {...scoreSession(sessions),sessions,reviewed:!!data.reviewed[id]};}
 function activeSave(){
@@ -347,6 +347,29 @@ function teacherView(main){
   });
   append(typingLabel,typing,el("span",null,"Attiva dettati con tastiera (facoltativi; possono affaticare lo studente)"));
   append(summary,nameLabel,nameInput,saveName,typingLabel);
+  const voiceBox=el("section","voice-settings");
+  voiceBox.append(el("h3",null,"Voce italiana"));
+  const voiceSelect=el("select","teacher-input");voiceSelect.id="voice-choice";
+  const populate=()=>{
+    voiceSelect.replaceChildren();
+    const automatic=el("option",null,"Automatica");automatic.value="";voiceSelect.append(automatic);
+    const available=speechAvailable()?speechSynthesis.getVoices().filter(v=>/^it/i.test(v.lang)):[];
+    for(const v of available){const option=el("option",null,v.name+" ("+v.lang+")");option.value=v.voiceURI;voiceSelect.append(option);}
+    voiceSelect.value=available.some(v=>v.voiceURI===data.preferences.voiceURI)?data.preferences.voiceURI:"";
+  };
+  populate();
+  voiceSelect.addEventListener("change",()=>{data.preferences.voiceURI=voiceSelect.value;save();selectVoice();});
+  const voiceLabel=el("label",null,"Scegli una voce italiana");voiceLabel.htmlFor="voice-choice";
+  const rateLabel=el("label",null,"Velocità");rateLabel.htmlFor="voice-rate";
+  const rateSelect=el("select","teacher-input");rateSelect.id="voice-rate";
+  for(const speed of [0.85,0.95,1,1.1]){const opt=el("option",null,speed===1?"Normale":String(speed)+"×");opt.value=String(speed);rateSelect.append(opt);}
+  rateSelect.value=String(data.preferences.rate||1);
+  rateSelect.addEventListener("change",()=>{data.preferences.rate=Number(rateSelect.value);save();});
+  append(voiceBox,voiceLabel,voiceSelect,rateLabel,rateSelect,
+    btn("Ascolta una prova","teacher-primary",()=>say("Oggi sono a scuola. Leggo una parola e poi scrivo sul quaderno.","sentence")),
+    btn("Aggiorna voci","teacher-secondary",populate),
+    el("p","teacher-muted","La scelta dipende dalle voci che il browser rende disponibili. Prova una voce diversa a velocità normale. Su alcuni telefoni le voci avanzate possono essere installate dalle impostazioni di accessibilità."));
+  summary.append(voiceBox);
   const tools=el("div","teacher-tools");
   append(tools,btn("Esporta progressi","teacher-secondary",exportProgress),
     btn("Cancella progressi locali","teacher-secondary danger",clearProgress));
