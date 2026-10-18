@@ -1,12 +1,13 @@
 import { LEVELS, LESSONS, personalizedItems, validateCurriculum } from "./curriculum.mjs";
 import { makeActivities, checkChoice, scoreSession } from "./engine.mjs";
+import { createNeuralPlayer } from "./neural-audio.mjs";
 
 const STORE = "m_app_local_v1"; // Keep the existing key: preserve installed students' progress.
 const defaults = () => ({
   profile: {name:"",setup:false},
   history:{},reviewed:{},active:null,
   assignment:1,
-  preferences:{typing:false,voiceURI:'',rate:1}
+  preferences:{typing:false,voiceURI:'',rate:1,audioMode:"neural"}
 });
 const root = document.querySelector("#app");
 let data = readStore();
@@ -84,14 +85,13 @@ if(speechAvailable()){
   selectVoice();
   window.speechSynthesis.addEventListener?.("voiceschanged",selectVoice);
 }
-function stop(){if(speechAvailable())window.speechSynthesis.cancel();}
-function say(text,kind="instruction"){
-  audioMessage="";
+function nativeSpeech(text,kind="instruction"){
   if(!speechAvailable()){
     audioMessage="Audio non disponibile su questo dispositivo.";
     render();return;
   }
-  stop();selectVoice();
+  selectVoice();
+  window.speechSynthesis.cancel();
   const utterance=new SpeechSynthesisUtterance(String(text));
   utterance.lang="it-IT";
   if(selectedVoice)utterance.voice=selectedVoice;
@@ -99,6 +99,18 @@ function say(text,kind="instruction"){
   utterance.pitch=1;
   utterance.onerror=()=>{audioMessage="Audio non disponibile. Controlla il volume e la voce italiana.";render();};
   speechSynthesis.speak(utterance);
+}
+const neuralVoice=createNeuralPlayer({nativeFallback:nativeSpeech});
+neuralVoice.prepare();
+function stop(){
+  neuralVoice.stop();
+  if(speechAvailable())window.speechSynthesis.cancel();
+}
+function say(text,kind="instruction",mode=null){
+  audioMessage="";
+  const selectedMode=mode||data.preferences.audioMode||"neural";
+  if(speechAvailable())window.speechSynthesis.cancel();
+  neuralVoice.play(text,kind,selectedMode==="device");
 }
 function audioButton(text,kind="instruction",label="ASCOLTA"){
   return btn(label,"audio-btn",()=>say(text,kind),{ico:"sound",aria:label});
@@ -349,6 +361,15 @@ function teacherView(main){
   append(summary,nameLabel,nameInput,saveName,typingLabel);
   const voiceBox=el("section","voice-settings");
   voiceBox.append(el("h3",null,"Voce italiana"));
+  const modeLabel=el("label",null,"Riproduzione consigliata");modeLabel.htmlFor="voice-mode";
+  const modeSelect=el("select","teacher-input");modeSelect.id="voice-mode";
+  const neuralOption=el("option",null,"Neurale Piper (se installata)");neuralOption.value="neural";
+  const deviceOption=el("option",null,"Voce del telefono");deviceOption.value="device";
+  append(modeSelect,neuralOption,deviceOption);
+  modeSelect.value=data.preferences.audioMode==="device"?"device":"neural";
+  modeSelect.addEventListener("change",()=>{data.preferences.audioMode=modeSelect.value;stop();save();});
+  append(voiceBox,modeLabel,modeSelect,
+    el("p","teacher-muted","Audio neurali disponibili: "+neuralVoice.count()+". Se non sono stati ancora pubblicati o manca un file, usa automaticamente la voce del telefono."));
   const voiceSelect=el("select","teacher-input");voiceSelect.id="voice-choice";
   const populate=()=>{
     voiceSelect.replaceChildren();
@@ -366,7 +387,8 @@ function teacherView(main){
   rateSelect.value=String(data.preferences.rate||1);
   rateSelect.addEventListener("change",()=>{data.preferences.rate=Number(rateSelect.value);save();});
   append(voiceBox,voiceLabel,voiceSelect,rateLabel,rateSelect,
-    btn("Ascolta una prova","teacher-primary",()=>say("Oggi sono a scuola. Leggo una parola e poi scrivo sul quaderno.","sentence")),
+    btn("Prova voce scelta","teacher-primary",()=>say("Oggi sono a scuola. Leggo una parola e poi scrivo sul quaderno.","sentence")),
+    btn("Confronta voce telefono","teacher-secondary",()=>say("Oggi sono a scuola. Leggo una parola e poi scrivo sul quaderno.","sentence","device")),
     btn("Aggiorna voci","teacher-secondary",populate),
     el("p","teacher-muted","La scelta dipende dalle voci che il browser rende disponibili. Prova una voce diversa a velocità normale. Su alcuni telefoni le voci avanzate possono essere installate dalle impostazioni di accessibilità."));
   summary.append(voiceBox);
