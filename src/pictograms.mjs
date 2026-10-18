@@ -396,15 +396,15 @@ const UNIT_PICTURES=[
   },
   {
     "type": "picture-letter",
-    "picture": "mela",
-    "display": "ME_A",
-    "correct": "L",
+    "picture": "telefono",
+    "display": "TELE__NO",
+    "correct": "FO",
     "choices": [
-      "L",
-      "N",
-      "S"
+      "FO",
+      "FA",
+      "FI"
     ],
-    "word": "MELA"
+    "word": "TELEFONO"
   },
   {
     "type": "picture-syllable",
@@ -533,24 +533,24 @@ const UNIT_PICTURES=[
   {
     "type": "picture-syllable",
     "picture": "acqua",
-    "display": "AC__A",
-    "correct": "QU",
+    "display": "AC___",
+    "correct": "QUA",
     "choices": [
-      "QU",
-      "CU",
-      "GU"
+      "QUA",
+      "CUA",
+      "GUA"
     ],
     "word": "ACQUA"
   },
   {
     "type": "picture-syllable",
     "picture": "chiave",
-    "display": "CHI__E",
-    "correct": "AV",
+    "display": "___AVE",
+    "correct": "CHI",
     "choices": [
-      "AV",
-      "EV",
-      "OV"
+      "CHI",
+      "CHE",
+      "GHI"
     ],
     "word": "CHIAVE"
   },
