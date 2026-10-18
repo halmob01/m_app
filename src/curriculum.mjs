@@ -10,7 +10,7 @@ export const LEVELS = [
   "Dalla parola alla frase",
   "Leggere nella vita quotidiana",
   "Scrivere brevi testi",
-  "Verso l’autonomia"
+  "Leggere e scrivere testi"
 ];
 
 // Ogni riga: titolo; obiettivo; tipo; elementi esercitati; attività sul quaderno.
@@ -65,7 +65,7 @@ const RAW = [
   ["Lista della spesa","Leggere e scrivere una lista","reading","pane, latte, mele|acqua, pasta, riso","Scrivi tre cose da comprare, una per riga."],
   ["Due istruzioni","Seguire una breve sequenza scritta","reading","Apri il quaderno. Scrivi il nome.|Prendi la penna. Copia la parola.","Scrivi due azioni da fare in ordine."],
   ["Tre frasi","Comprendere un breve testo","reading","Luca è a scuola. Ha un quaderno. Oggi scrive una frase.","Scrivi chi è il protagonista e cosa fa."],
-  ["La frase del giorno","Produrre una frase autonoma","reading","Oggi sono in classe.|Dopo vado a casa.","Scrivi una frase vera sulla tua giornata."],
+  ["La frase del giorno","Scrivere una frase sulla propria giornata","reading","Oggi sono in classe.|Dopo vado a casa.","Scrivi una frase vera sulla tua giornata."],
   ["Scrivere a un amico","Comporre due frasi in un messaggio","reading","Ciao, come stai?|Ci vediamo domani.","Scrivi un messaggio di due frasi a un amico immaginario."],
   ["Prima, poi, infine","Raccontare tre azioni in ordine","reading","Prima esco. Poi prendo il bus. Infine arrivo a scuola.","Scrivi tre azioni della tua mattina."],
   ["Descrivere un oggetto","Scrivere due frasi che descrivano","reading","Questa è una penna. È blu.|Questo è un telefono. È nero.","Scegli un oggetto reale e scrivi due frasi."],
@@ -76,7 +76,7 @@ const RAW = [
   ["Tre passaggi","Comprendere istruzioni in sequenza","reading","Prendi il quaderno. Scrivi la data. Poi rileggi.","Scrivi tre istruzioni semplici per un compagno."],
   ["Un modulo semplice","Capire i campi di un modulo","reading","NOME|DATA|CITTÀ|FIRMA","Copia i quattro campi. Compila con informazioni inventate, non dati reali."],
   ["Raccontare un fatto","Leggere e produrre un testo di alcune frasi","reading","Ieri Luca è uscito. Ha incontrato Anna. Sono andati al parco. Poi è tornato a casa.","Racconta una piccola esperienza in tre o cinque frasi."],
-  ["Leggo e scrivo da solo","Concludere un compito autentico in autonomia","reading","Domani la biblioteca apre alle 9. Chiude alle 18. Luca vuole prendere un libro.","Scrivi un messaggio e un testo breve. Chiedi una verifica all'insegnante."]
+  ["Leggo e scrivo","Leggere un testo e scrivere un messaggio breve","reading","Domani la biblioteca apre alle 9. Chiude alle 18. Luca vuole prendere un libro.","Scrivi un messaggio e un testo breve. Chiedi una verifica all'insegnante."]
 ];
 
 const READING_QUESTIONS = {
