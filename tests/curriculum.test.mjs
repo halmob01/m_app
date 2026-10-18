@@ -77,11 +77,11 @@ test("45 asset Tabler SVG locali, senza immagini remote e senza duplicati",()=>{
   assert.equal(Object.keys(PICTOGRAMS).length,45);
   const filenames=new Set();
   for(const [name,item] of Object.entries(PICTOGRAMS)){
-    assert.match(item.filename,/^[a-z-]+\\.svg$/);
+    assert.match(item.filename,/^[a-z-]+\.svg$/);
     assert.ok(item.alt && item.spoken,name);
     filenames.add(item.filename);
     const svg=readFileSync(new URL("../assets/pictograms/"+item.filename,import.meta.url),"utf8");
-    assert.match(svg,/<svg\\b/);
+    assert.match(svg,/<svg\b/);
   }
   assert.equal(filenames.size,45);
 });
