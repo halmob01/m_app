@@ -1,907 +1,1021 @@
-// SVG originali Tabler Icons: assets locali MIT (vedi assets/pictograms/LICENSE).
-// Le figure sono supporti didattici, non misure di lettura autonoma.
+// Tabler Icons, licenza MIT. La selezione visuale è pratica aggiuntiva, non un test di decodifica.
 export const PICTOGRAMS=Object.freeze({
   "mano": {
     "filename": "mano.svg",
-    "alt": "una mano",
-    "spoken": "una mano"
+    "alt": "Una mano"
   },
   "mela": {
     "filename": "mela.svg",
-    "alt": "una mela",
-    "spoken": "una mela"
+    "alt": "Una mela"
   },
   "sole": {
     "filename": "sole.svg",
-    "alt": "il sole",
-    "spoken": "il sole"
+    "alt": "Il sole"
   },
   "luna": {
     "filename": "luna.svg",
-    "alt": "la luna",
-    "spoken": "la luna"
+    "alt": "La luna"
   },
   "pane": {
     "filename": "pane.svg",
-    "alt": "il pane",
-    "spoken": "il pane"
+    "alt": "Il pane"
   },
   "casa": {
     "filename": "casa.svg",
-    "alt": "una casa",
-    "spoken": "una casa"
+    "alt": "Una casa"
   },
   "cane": {
     "filename": "cane.svg",
-    "alt": "un cane",
-    "spoken": "un cane"
+    "alt": "Un cane"
   },
   "dado": {
     "filename": "dado.svg",
-    "alt": "un dado",
-    "spoken": "un dado"
+    "alt": "Un dado"
   },
   "treno": {
     "filename": "treno.svg",
-    "alt": "un treno",
-    "spoken": "un treno"
+    "alt": "Un treno"
   },
   "libro": {
     "filename": "libro.svg",
-    "alt": "un libro",
-    "spoken": "un libro"
+    "alt": "Un libro"
   },
   "bus": {
     "filename": "bus.svg",
-    "alt": "un autobus",
-    "spoken": "un autobus"
+    "alt": "Un autobus"
   },
-  "bike": {
-    "filename": "bike.svg",
-    "alt": "una bicicletta",
-    "spoken": "una bicicletta"
+  "bici": {
+    "filename": "bici.svg",
+    "alt": "Una bicicletta"
   },
   "computer": {
     "filename": "computer.svg",
-    "alt": "un computer",
-    "spoken": "un computer"
+    "alt": "Un computer"
   },
   "telefono": {
     "filename": "telefono.svg",
-    "alt": "un telefono",
-    "spoken": "un telefono"
+    "alt": "Un telefono"
   },
   "orologio": {
     "filename": "orologio.svg",
-    "alt": "un orologio",
-    "spoken": "un orologio"
+    "alt": "Un orologio"
   },
   "calendario": {
     "filename": "calendario.svg",
-    "alt": "un calendario",
-    "spoken": "un calendario"
+    "alt": "Un calendario"
   },
   "matita": {
     "filename": "matita.svg",
-    "alt": "una matita",
-    "spoken": "una matita"
+    "alt": "Una matita"
   },
   "scuola": {
     "filename": "scuola.svg",
-    "alt": "una scuola",
-    "spoken": "una scuola"
+    "alt": "Una scuola"
   },
   "negozio": {
     "filename": "negozio.svg",
-    "alt": "un negozio",
-    "spoken": "un negozio"
+    "alt": "Un negozio"
   },
-  "carrello": {
-    "filename": "carrello.svg",
-    "alt": "un carrello",
-    "spoken": "un carrello"
+  "spesa": {
+    "filename": "spesa.svg",
+    "alt": "Un carrello della spesa"
   },
   "caffe": {
     "filename": "caffe.svg",
-    "alt": "una tazza di caffè",
-    "spoken": "una tazza di caffè"
+    "alt": "Un caffè"
   },
   "maglia": {
     "filename": "maglia.svg",
-    "alt": "una maglia",
-    "spoken": "una maglia"
+    "alt": "Una maglia"
   },
   "biglietto": {
     "filename": "biglietto.svg",
-    "alt": "un biglietto",
-    "spoken": "un biglietto"
+    "alt": "Un biglietto"
   },
   "chiave": {
     "filename": "chiave.svg",
-    "alt": "una chiave",
-    "spoken": "una chiave"
+    "alt": "Una chiave"
   },
   "messaggio": {
     "filename": "messaggio.svg",
-    "alt": "un messaggio",
-    "spoken": "un messaggio"
+    "alt": "Un messaggio"
   },
-  "posta": {
-    "filename": "posta.svg",
-    "alt": "una busta",
-    "spoken": "una busta"
+  "lettera": {
+    "filename": "lettera.svg",
+    "alt": "Una lettera"
   },
   "auto": {
     "filename": "auto.svg",
-    "alt": "un'automobile",
-    "spoken": "un'automobile"
+    "alt": "Un'automobile"
   },
-  "pallone": {
-    "filename": "pallone.svg",
-    "alt": "un pallone",
-    "spoken": "un pallone"
+  "palla": {
+    "filename": "palla.svg",
+    "alt": "Un pallone"
   },
   "pesce": {
     "filename": "pesce.svg",
-    "alt": "un pesce",
-    "spoken": "un pesce"
+    "alt": "Un pesce"
   },
   "albero": {
     "filename": "albero.svg",
-    "alt": "un albero",
-    "spoken": "un albero"
+    "alt": "Un albero"
   },
   "ombrello": {
     "filename": "ombrello.svg",
-    "alt": "un ombrello",
-    "spoken": "un ombrello"
-  },
-  "campana": {
-    "filename": "campana.svg",
-    "alt": "una campana",
-    "spoken": "una campana"
+    "alt": "Un ombrello"
   },
   "ospedale": {
     "filename": "ospedale.svg",
-    "alt": "un ospedale",
-    "spoken": "un ospedale"
-  },
-  "lavoro": {
-    "filename": "lavoro.svg",
-    "alt": "una valigetta da lavoro",
-    "spoken": "una valigetta da lavoro"
-  },
-  "gatto": {
-    "filename": "gatto.svg",
-    "alt": "un gatto",
-    "spoken": "un gatto"
-  },
-  "gelato": {
-    "filename": "gelato.svg",
-    "alt": "un gelato",
-    "spoken": "un gelato"
-  },
-  "quaderno": {
-    "filename": "quaderno.svg",
-    "alt": "un quaderno",
-    "spoken": "un quaderno"
-  },
-  "bagno": {
-    "filename": "bagno.svg",
-    "alt": "una vasca da bagno",
-    "spoken": "una vasca da bagno"
-  },
-  "acqua": {
-    "filename": "acqua.svg",
-    "alt": "una goccia d'acqua",
-    "spoken": "una goccia d'acqua"
-  },
-  "bicchiere": {
-    "filename": "bicchiere.svg",
-    "alt": "un bicchiere",
-    "spoken": "un bicchiere"
+    "alt": "Un ospedale"
   },
   "valigia": {
     "filename": "valigia.svg",
-    "alt": "una valigia",
-    "spoken": "una valigia"
+    "alt": "Una valigia"
   },
-  "sole-alba": {
-    "filename": "sole-alba.svg",
-    "alt": "il sole che sorge",
-    "spoken": "il sole che sorge"
+  "gelato": {
+    "filename": "gelato.svg",
+    "alt": "Un gelato"
   },
-  "posizione": {
-    "filename": "posizione.svg",
-    "alt": "un segnaposto",
-    "spoken": "un segnaposto"
+  "gatto": {
+    "filename": "gatto.svg",
+    "alt": "Un gatto"
   },
-  "lista": {
-    "filename": "lista.svg",
-    "alt": "una lista",
-    "spoken": "una lista"
+  "bagno": {
+    "filename": "bagno.svg",
+    "alt": "Una vasca da bagno"
   },
-  "cuore": {
-    "filename": "cuore.svg",
-    "alt": "un cuore",
-    "spoken": "un cuore"
+  "acqua": {
+    "filename": "acqua.svg",
+    "alt": "Una goccia d'acqua"
+  },
+  "bicchiere": {
+    "filename": "bicchiere.svg",
+    "alt": "Un bicchiere"
+  },
+  "quaderno": {
+    "filename": "quaderno.svg",
+    "alt": "Un quaderno"
   }
 });
-const UNIT_PICTURES=[
-  {
-    "type": "picture-listen",
-    "picture": "mela",
-    "correct": "mela",
-    "choices": [
-      "mela",
-      "mano",
-      "luna"
-    ]
-  },
-  {
-    "type": "picture-listen",
-    "picture": "mano",
-    "correct": "mano",
-    "choices": [
-      "mano",
-      "sole",
-      "cane"
-    ]
-  },
-  {
-    "type": "picture-listen",
-    "picture": "sole",
-    "correct": "sole",
-    "choices": [
-      "sole",
-      "luna",
-      "pane"
-    ]
-  },
-  {
-    "type": "picture-listen",
-    "picture": "luna",
-    "correct": "luna",
-    "choices": [
-      "luna",
-      "mela",
-      "mano"
-    ]
-  },
-  {
-    "type": "picture-listen",
-    "picture": "casa",
-    "correct": "casa",
-    "choices": [
-      "casa",
-      "pane",
-      "sole"
-    ]
-  },
-  {
-    "type": "picture-listen",
-    "picture": "pane",
-    "correct": "pane",
-    "choices": [
-      "pane",
-      "casa",
-      "cane"
-    ]
-  },
-  {
-    "type": "picture-listen",
-    "picture": "mano",
-    "correct": "mano",
-    "choices": [
-      "mano",
-      "mela",
-      "luna"
-    ]
-  },
-  {
-    "type": "picture-listen",
-    "picture": "cane",
-    "correct": "cane",
-    "choices": [
-      "cane",
-      "casa",
-      "pane"
-    ]
-  },
-  {
-    "type": "picture-listen",
-    "picture": "sole",
-    "correct": "sole",
-    "choices": [
-      "sole",
-      "mano",
-      "luna"
-    ]
-  },
-  {
-    "type": "picture-listen",
-    "picture": "mela",
-    "correct": "mela",
-    "choices": [
-      "mela",
-      "cane",
-      "pane"
-    ]
-  },
-  {
-    "type": "picture-letter",
-    "picture": "mano",
-    "display": "MA_O",
-    "correct": "N",
-    "choices": [
-      "N",
-      "L",
-      "S"
-    ],
-    "word": "MANO"
-  },
-  {
-    "type": "picture-syllable",
-    "picture": "luna",
-    "display": "LU__",
-    "correct": "NA",
-    "choices": [
-      "NA",
-      "MA",
-      "LA"
-    ],
-    "word": "LUNA"
-  },
-  {
-    "type": "picture-letter",
-    "picture": "pane",
-    "display": "PA_E",
-    "correct": "N",
-    "choices": [
-      "N",
-      "L",
-      "M"
-    ],
-    "word": "PANE"
-  },
-  {
-    "type": "picture-listen",
-    "picture": "treno",
-    "correct": "treno",
-    "choices": [
-      "treno",
-      "bus",
-      "bike"
-    ]
-  },
-  {
-    "type": "picture-listen",
-    "picture": "treno",
-    "correct": "treno",
-    "choices": [
-      "treno",
-      "auto",
-      "bus"
-    ]
-  },
-  {
-    "type": "picture-listen",
-    "picture": "pesce",
-    "correct": "pesce",
-    "choices": [
-      "pesce",
-      "cane",
-      "gatto"
-    ]
-  },
-  {
-    "type": "picture-letter",
-    "picture": "telefono",
-    "display": "TELE__NO",
-    "correct": "FO",
-    "choices": [
-      "FO",
-      "FA",
-      "FI"
-    ],
-    "word": "TELEFONO"
-  },
-  {
-    "type": "picture-syllable",
-    "picture": "sole",
-    "display": "SO__",
-    "correct": "LE",
-    "choices": [
-      "LE",
-      "LA",
-      "LI"
-    ],
-    "word": "SOLE"
-  },
-  {
-    "type": "picture-letter",
-    "picture": "dado",
-    "display": "D_DO",
-    "correct": "A",
-    "choices": [
-      "A",
-      "E",
-      "O"
-    ],
-    "word": "DADO"
-  },
-  {
-    "type": "picture-listen",
-    "picture": "valigia",
-    "correct": "valigia",
-    "choices": [
-      "valigia",
-      "maglia",
-      "quaderno"
-    ]
-  },
-  {
-    "type": "picture-letter",
-    "picture": "casa",
-    "display": "C_SA",
-    "correct": "A",
-    "choices": [
-      "A",
-      "O",
-      "U"
-    ],
-    "word": "CASA"
-  },
-  {
-    "type": "picture-listen",
-    "picture": "gatto",
-    "correct": "gatto",
-    "choices": [
-      "gatto",
-      "cane",
-      "pesce"
-    ]
-  },
-  {
-    "type": "picture-letter",
-    "picture": "casa",
-    "display": "C_SA",
-    "correct": "A",
-    "choices": [
-      "A",
-      "O",
-      "U"
-    ],
-    "word": "CASA"
-  },
-  {
-    "type": "picture-letter",
-    "picture": "cane",
-    "display": "CA_E",
-    "correct": "N",
-    "choices": [
-      "N",
-      "L",
-      "S"
-    ],
-    "word": "CANE"
-  },
-  {
-    "type": "picture-listen",
-    "picture": "gelato",
-    "correct": "gelato",
-    "choices": [
-      "gelato",
-      "pane",
-      "mela"
-    ]
-  },
-  {
-    "type": "picture-syllable",
-    "picture": "gelato",
-    "display": "GE__TO",
-    "correct": "LA",
-    "choices": [
-      "LA",
-      "LE",
-      "LI"
-    ],
-    "word": "GELATO"
-  },
-  {
-    "type": "picture-syllable",
-    "picture": "chiave",
-    "display": "___AVE",
-    "correct": "CHI",
-    "choices": [
-      "CHI",
-      "CHE",
-      "GHI"
-    ],
-    "word": "CHIAVE"
-  },
-  {
-    "type": "picture-listen",
-    "picture": "gelato",
-    "correct": "gelato",
-    "choices": [
-      "gelato",
-      "pane",
-      "pesce"
-    ]
-  },
-  {
-    "type": "picture-syllable",
-    "picture": "acqua",
-    "display": "AC___",
-    "correct": "QUA",
-    "choices": [
-      "QUA",
-      "CUA",
-      "GUA"
-    ],
-    "word": "ACQUA"
-  },
-  {
-    "type": "picture-syllable",
-    "picture": "chiave",
-    "display": "___AVE",
-    "correct": "CHI",
-    "choices": [
-      "CHI",
-      "CHE",
-      "GHI"
-    ],
-    "word": "CHIAVE"
-  },
-  {
-    "type": "picture-listen",
-    "picture": "carrello",
-    "correct": "carrello",
-    "choices": [
-      "carrello",
-      "valigia",
-      "computer"
-    ]
-  },
-  {
-    "type": "picture-letter",
-    "picture": "treno",
-    "display": "T_ENO",
-    "correct": "R",
-    "choices": [
-      "R",
-      "L",
-      "N"
-    ],
-    "word": "TRENO"
-  },
-  {
-    "type": "picture-syllable",
-    "picture": "pesce",
-    "display": "PE___",
-    "correct": "SCE",
-    "choices": [
-      "SCE",
-      "SCI",
-      "SCA"
-    ],
-    "word": "PESCE"
-  },
-  {
-    "type": "picture-syllable",
-    "picture": "bagno",
-    "display": "BA___",
-    "correct": "GNO",
-    "choices": [
-      "GNO",
-      "GNA",
-      "GNI"
-    ],
-    "word": "BAGNO"
-  },
-  {
-    "type": "picture-letter",
-    "picture": "pallone",
-    "display": "PALL_NE",
-    "correct": "O",
-    "choices": [
-      "O",
-      "A",
-      "E"
-    ],
-    "word": "PALLONE"
-  },
-  {
-    "type": "picture-syllable",
-    "picture": "bagno",
-    "display": "BA___",
-    "correct": "GNO",
-    "choices": [
-      "GNO",
-      "GNA",
-      "GNI"
-    ],
-    "word": "BAGNO"
-  },
-  {
-    "type": "picture-meaning",
-    "display": "IL PANE",
-    "picture": "pane",
-    "correct": "pane",
-    "choices": [
-      "pane",
-      "libro",
-      "mela"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Luca legge un libro.",
-    "picture": "libro",
-    "correct": "libro",
-    "choices": [
-      "libro",
-      "pallone",
-      "telefono"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Ho un telefono.",
-    "picture": "telefono",
-    "correct": "telefono",
-    "choices": [
-      "telefono",
-      "orologio",
-      "computer"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Vado a scuola.",
-    "picture": "scuola",
-    "correct": "scuola",
-    "choices": [
-      "scuola",
-      "ospedale",
-      "negozio"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Preferisco la bici.",
-    "picture": "bike",
-    "correct": "bike",
-    "choices": [
-      "bike",
-      "bus",
-      "auto"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Dove sei? Guarda la posizione.",
-    "picture": "posizione",
-    "correct": "posizione",
-    "choices": [
-      "posizione",
-      "calendario",
-      "lista"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Ti mando un messaggio.",
-    "picture": "messaggio",
-    "correct": "messaggio",
-    "choices": [
-      "messaggio",
-      "posta",
-      "biglietto"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Il negozio è aperto.",
-    "picture": "negozio",
-    "correct": "negozio",
-    "choices": [
-      "negozio",
-      "scuola",
-      "ospedale"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Il treno parte alle 16.",
-    "picture": "treno",
-    "correct": "treno",
-    "choices": [
-      "treno",
-      "auto",
-      "bus"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Faccio la spesa.",
-    "picture": "carrello",
-    "correct": "carrello",
-    "choices": [
-      "carrello",
-      "valigia",
-      "lavoro"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Prendi il quaderno.",
-    "picture": "quaderno",
-    "correct": "quaderno",
-    "choices": [
-      "quaderno",
-      "telefono",
-      "calendario"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Luca usa un quaderno.",
-    "picture": "quaderno",
-    "correct": "quaderno",
-    "choices": [
-      "quaderno",
-      "libro",
-      "computer"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Oggi sono a scuola.",
-    "picture": "scuola",
-    "correct": "scuola",
-    "choices": [
-      "scuola",
-      "ospedale",
-      "negozio"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Scrivo un messaggio.",
-    "picture": "messaggio",
-    "correct": "messaggio",
-    "choices": [
-      "messaggio",
-      "biglietto",
-      "posta"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Prendo il bus.",
-    "picture": "bus",
-    "correct": "bus",
-    "choices": [
-      "bus",
-      "bike",
-      "treno"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Questo è un telefono.",
-    "picture": "telefono",
-    "correct": "telefono",
-    "choices": [
-      "telefono",
-      "computer",
-      "orologio"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "La strada porta all'ospedale.",
-    "picture": "ospedale",
-    "correct": "ospedale",
-    "choices": [
-      "ospedale",
-      "scuola",
-      "negozio"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Scrivo con la matita.",
-    "picture": "matita",
-    "correct": "matita",
-    "choices": [
-      "matita",
-      "chiave",
-      "biglietto"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Marco va al lavoro.",
-    "picture": "lavoro",
-    "correct": "lavoro",
-    "choices": [
-      "lavoro",
-      "scuola",
-      "negozio"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Ci vediamo alla fermata del bus.",
-    "picture": "bus",
-    "correct": "bus",
-    "choices": [
-      "bus",
-      "treno",
-      "auto"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Prendi il quaderno.",
-    "picture": "quaderno",
-    "correct": "quaderno",
-    "choices": [
-      "quaderno",
-      "libro",
-      "calendario"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Scrivi la data sul calendario.",
-    "picture": "calendario",
-    "correct": "calendario",
-    "choices": [
-      "calendario",
-      "orologio",
-      "quaderno"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Luca torna a casa.",
-    "picture": "casa",
-    "correct": "casa",
-    "choices": [
-      "casa",
-      "negozio",
-      "ospedale"
-    ]
-  },
-  {
-    "type": "picture-meaning",
-    "display": "Voglio prendere un libro.",
-    "picture": "libro",
-    "correct": "libro",
-    "choices": [
-      "libro",
-      "quaderno",
-      "telefono"
-    ]
-  }
-];
-export const PICTURE_PRACTICE=Object.freeze(Object.fromEntries(UNIT_PICTURES.map((item,index)=>[index+1,[Object.freeze(item)]])));
+
+// Un'attività visuale contestuale per ognuna delle sessanta unità.
+// U01–U10: ascolto e riconoscimento di immagini; U11–U36: grafema/sillaba;
+// U37–U60: frase funzionale con parola mancante. Le prove autonome restano senza immagini.
+export const PICTURE_PRACTICE=Object.freeze({
+  "1": [
+    {
+      "type": "picture-match",
+      "picture": "mano",
+      "display": "",
+      "correct": "mano",
+      "choices": [
+        "mano",
+        "mela",
+        "sole"
+      ],
+      "word": "MANO"
+    }
+  ],
+  "2": [
+    {
+      "type": "picture-match",
+      "picture": "mela",
+      "display": "",
+      "correct": "mela",
+      "choices": [
+        "mela",
+        "mano",
+        "luna"
+      ],
+      "word": "MELA"
+    }
+  ],
+  "3": [
+    {
+      "type": "picture-match",
+      "picture": "acqua",
+      "display": "",
+      "correct": "acqua",
+      "choices": [
+        "acqua",
+        "sole",
+        "casa"
+      ],
+      "word": "ACQUA"
+    }
+  ],
+  "4": [
+    {
+      "type": "picture-match",
+      "picture": "orologio",
+      "display": "",
+      "correct": "orologio",
+      "choices": [
+        "orologio",
+        "libro",
+        "pane"
+      ],
+      "word": "OROLOGIO"
+    }
+  ],
+  "5": [
+    {
+      "type": "picture-match",
+      "picture": "luna",
+      "display": "",
+      "correct": "luna",
+      "choices": [
+        "luna",
+        "mela",
+        "sole"
+      ],
+      "word": "LUNA"
+    }
+  ],
+  "6": [
+    {
+      "type": "picture-match",
+      "picture": "sole",
+      "display": "",
+      "correct": "sole",
+      "choices": [
+        "sole",
+        "casa",
+        "mano"
+      ],
+      "word": "SOLE"
+    }
+  ],
+  "7": [
+    {
+      "type": "picture-match",
+      "picture": "mela",
+      "display": "",
+      "correct": "mela",
+      "choices": [
+        "mela",
+        "mano",
+        "pane"
+      ],
+      "word": "MELA"
+    }
+  ],
+  "8": [
+    {
+      "type": "picture-match",
+      "picture": "mano",
+      "display": "",
+      "correct": "mano",
+      "choices": [
+        "mano",
+        "casa",
+        "luna"
+      ],
+      "word": "MANO"
+    }
+  ],
+  "9": [
+    {
+      "type": "picture-match",
+      "picture": "luna",
+      "display": "",
+      "correct": "luna",
+      "choices": [
+        "luna",
+        "mela",
+        "casa"
+      ],
+      "word": "LUNA"
+    }
+  ],
+  "10": [
+    {
+      "type": "picture-match",
+      "picture": "sole",
+      "display": "",
+      "correct": "sole",
+      "choices": [
+        "sole",
+        "mano",
+        "mela"
+      ],
+      "word": "SOLE"
+    }
+  ],
+  "11": [
+    {
+      "type": "picture-letter",
+      "picture": "mano",
+      "display": "MA_O",
+      "correct": "N",
+      "choices": [
+        "N",
+        "L",
+        "S"
+      ],
+      "word": "MANO"
+    }
+  ],
+  "12": [
+    {
+      "type": "picture-syllable",
+      "picture": "luna",
+      "display": "LU__",
+      "correct": "NA",
+      "choices": [
+        "NA",
+        "MA",
+        "LA"
+      ],
+      "word": "LUNA"
+    }
+  ],
+  "13": [
+    {
+      "type": "picture-letter",
+      "picture": "pane",
+      "display": "PA_E",
+      "correct": "N",
+      "choices": [
+        "N",
+        "L",
+        "M"
+      ],
+      "word": "PANE"
+    }
+  ],
+  "14": [
+    {
+      "type": "picture-letter",
+      "picture": "mela",
+      "display": "ME_A",
+      "correct": "L",
+      "choices": [
+        "L",
+        "N",
+        "R"
+      ],
+      "word": "MELA"
+    }
+  ],
+  "15": [
+    {
+      "type": "picture-letter",
+      "picture": "mano",
+      "display": "M_NO",
+      "correct": "A",
+      "choices": [
+        "A",
+        "E",
+        "O"
+      ],
+      "word": "MANO"
+    }
+  ],
+  "16": [
+    {
+      "type": "picture-letter",
+      "picture": "sole",
+      "display": "SO_E",
+      "correct": "L",
+      "choices": [
+        "L",
+        "M",
+        "N"
+      ],
+      "word": "SOLE"
+    }
+  ],
+  "17": [
+    {
+      "type": "picture-syllable",
+      "picture": "mela",
+      "display": "M__A",
+      "correct": "EL",
+      "choices": [
+        "EL",
+        "AL",
+        "IL"
+      ],
+      "word": "MELA"
+    }
+  ],
+  "18": [
+    {
+      "type": "picture-syllable",
+      "picture": "sole",
+      "display": "__LE",
+      "correct": "SO",
+      "choices": [
+        "SO",
+        "SA",
+        "SI"
+      ],
+      "word": "SOLE"
+    }
+  ],
+  "19": [
+    {
+      "type": "picture-letter",
+      "picture": "dado",
+      "display": "D_DO",
+      "correct": "A",
+      "choices": [
+        "A",
+        "E",
+        "O"
+      ],
+      "word": "DADO"
+    }
+  ],
+  "20": [
+    {
+      "type": "picture-letter",
+      "picture": "pane",
+      "display": "PA_E",
+      "correct": "N",
+      "choices": [
+        "N",
+        "L",
+        "R"
+      ],
+      "word": "PANE"
+    }
+  ],
+  "21": [
+    {
+      "type": "picture-letter",
+      "picture": "casa",
+      "display": "C_SA",
+      "correct": "A",
+      "choices": [
+        "A",
+        "O",
+        "U"
+      ],
+      "word": "CASA"
+    }
+  ],
+  "22": [
+    {
+      "type": "picture-letter",
+      "picture": "casa",
+      "display": "CA_A",
+      "correct": "S",
+      "choices": [
+        "S",
+        "N",
+        "M"
+      ],
+      "word": "CASA"
+    }
+  ],
+  "23": [
+    {
+      "type": "picture-letter",
+      "picture": "cane",
+      "display": "C_NE",
+      "correct": "A",
+      "choices": [
+        "A",
+        "O",
+        "E"
+      ],
+      "word": "CANE"
+    }
+  ],
+  "24": [
+    {
+      "type": "picture-letter",
+      "picture": "cane",
+      "display": "CA_E",
+      "correct": "N",
+      "choices": [
+        "N",
+        "L",
+        "R"
+      ],
+      "word": "CANE"
+    }
+  ],
+  "25": [
+    {
+      "type": "picture-letter",
+      "picture": "casa",
+      "display": "C_SA",
+      "correct": "A",
+      "choices": [
+        "A",
+        "O",
+        "E"
+      ],
+      "word": "CASA"
+    }
+  ],
+  "26": [
+    {
+      "type": "picture-syllable",
+      "picture": "gelato",
+      "display": "GE__TO",
+      "correct": "LA",
+      "choices": [
+        "LA",
+        "LE",
+        "LI"
+      ],
+      "word": "GELATO"
+    }
+  ],
+  "27": [
+    {
+      "type": "picture-letter",
+      "picture": "chiave",
+      "display": "CHI_VE",
+      "correct": "A",
+      "choices": [
+        "A",
+        "E",
+        "I"
+      ],
+      "word": "CHIAVE"
+    }
+  ],
+  "28": [
+    {
+      "type": "picture-letter",
+      "picture": "chiave",
+      "display": "CHIA_E",
+      "correct": "V",
+      "choices": [
+        "V",
+        "N",
+        "L"
+      ],
+      "word": "CHIAVE"
+    }
+  ],
+  "29": [
+    {
+      "type": "picture-syllable",
+      "picture": "acqua",
+      "display": "AC__A",
+      "correct": "QU",
+      "choices": [
+        "QU",
+        "CH",
+        "GU"
+      ],
+      "word": "ACQUA"
+    }
+  ],
+  "30": [
+    {
+      "type": "picture-syllable",
+      "picture": "gelato",
+      "display": "GE__TO",
+      "correct": "LA",
+      "choices": [
+        "LA",
+        "LI",
+        "LO"
+      ],
+      "word": "GELATO"
+    }
+  ],
+  "31": [
+    {
+      "type": "picture-syllable",
+      "picture": "spesa",
+      "display": "__ESA",
+      "correct": "SP",
+      "choices": [
+        "SP",
+        "ST",
+        "SC"
+      ],
+      "word": "SPESA"
+    }
+  ],
+  "32": [
+    {
+      "type": "picture-syllable",
+      "picture": "treno",
+      "display": "__ENO",
+      "correct": "TR",
+      "choices": [
+        "TR",
+        "PR",
+        "BR"
+      ],
+      "word": "TRENO"
+    }
+  ],
+  "33": [
+    {
+      "type": "picture-syllable",
+      "picture": "gelato",
+      "display": "GE__TO",
+      "correct": "LA",
+      "choices": [
+        "LA",
+        "LE",
+        "LI"
+      ],
+      "word": "GELATO"
+    }
+  ],
+  "34": [
+    {
+      "type": "picture-syllable",
+      "picture": "bagno",
+      "display": "BA__O",
+      "correct": "GN",
+      "choices": [
+        "GN",
+        "GL",
+        "GH"
+      ],
+      "word": "BAGNO"
+    }
+  ],
+  "35": [
+    {
+      "type": "picture-syllable",
+      "picture": "palla",
+      "display": "PA__A",
+      "correct": "LL",
+      "choices": [
+        "LL",
+        "LN",
+        "LT"
+      ],
+      "word": "PALLA"
+    }
+  ],
+  "36": [
+    {
+      "type": "picture-syllable",
+      "picture": "palla",
+      "display": "PA__A",
+      "correct": "LL",
+      "choices": [
+        "LL",
+        "LM",
+        "LN"
+      ],
+      "word": "PALLA"
+    }
+  ],
+  "37": [
+    {
+      "type": "picture-context",
+      "picture": "libro",
+      "display": "Ho un _____.",
+      "correct": "LIBRO",
+      "choices": [
+        "LIBRO",
+        "TRENO",
+        "PESCE"
+      ],
+      "word": "LIBRO"
+    }
+  ],
+  "38": [
+    {
+      "type": "picture-context",
+      "picture": "scuola",
+      "display": "Vado a _____.",
+      "correct": "SCUOLA",
+      "choices": [
+        "SCUOLA",
+        "TEATRO",
+        "CINEMA"
+      ],
+      "word": "SCUOLA"
+    }
+  ],
+  "39": [
+    {
+      "type": "picture-context",
+      "picture": "telefono",
+      "display": "Ho un _____.",
+      "correct": "TELEFONO",
+      "choices": [
+        "TELEFONO",
+        "OROLOGIO",
+        "COMPUTER"
+      ],
+      "word": "TELEFONO"
+    }
+  ],
+  "40": [
+    {
+      "type": "picture-context",
+      "picture": "casa",
+      "display": "Sono a _____.",
+      "correct": "CASA",
+      "choices": [
+        "CASA",
+        "ROMA",
+        "MARE"
+      ],
+      "word": "CASA"
+    }
+  ],
+  "41": [
+    {
+      "type": "picture-context",
+      "picture": "ombrello",
+      "display": "Non ho l'_____.",
+      "correct": "OMBRELLO",
+      "choices": [
+        "OMBRELLO",
+        "OROLOGIO",
+        "AUTOBUS"
+      ],
+      "word": "OMBRELLO"
+    }
+  ],
+  "42": [
+    {
+      "type": "picture-context",
+      "picture": "biglietto",
+      "display": "Dov'è il _____?",
+      "correct": "BIGLIETTO",
+      "choices": [
+        "BIGLIETTO",
+        "TELEFONO",
+        "QUADERNO"
+      ],
+      "word": "BIGLIETTO"
+    }
+  ],
+  "43": [
+    {
+      "type": "picture-context",
+      "picture": "messaggio",
+      "display": "Ho un _____.",
+      "correct": "MESSAGGIO",
+      "choices": [
+        "MESSAGGIO",
+        "OMBRELLO",
+        "TELEFONO"
+      ],
+      "word": "MESSAGGIO"
+    }
+  ],
+  "44": [
+    {
+      "type": "picture-context",
+      "picture": "chiave",
+      "display": "Apro con la _____.",
+      "correct": "CHIAVE",
+      "choices": [
+        "CHIAVE",
+        "MATITA",
+        "MAGLIA"
+      ],
+      "word": "CHIAVE"
+    }
+  ],
+  "45": [
+    {
+      "type": "picture-context",
+      "picture": "orologio",
+      "display": "Guardo l'_____.",
+      "correct": "OROLOGIO",
+      "choices": [
+        "OROLOGIO",
+        "OMBRELLO",
+        "AUTOBUS"
+      ],
+      "word": "OROLOGIO"
+    }
+  ],
+  "46": [
+    {
+      "type": "picture-context",
+      "picture": "spesa",
+      "display": "Faccio la _____.",
+      "correct": "SPESA",
+      "choices": [
+        "SPESA",
+        "PAUSA",
+        "FESTA"
+      ],
+      "word": "SPESA"
+    }
+  ],
+  "47": [
+    {
+      "type": "picture-context",
+      "picture": "quaderno",
+      "display": "Scrivo sul _____.",
+      "correct": "QUADERNO",
+      "choices": [
+        "QUADERNO",
+        "TELEFONO",
+        "COMPUTER"
+      ],
+      "word": "QUADERNO"
+    }
+  ],
+  "48": [
+    {
+      "type": "picture-context",
+      "picture": "treno",
+      "display": "Prendo il _____.",
+      "correct": "TRENO",
+      "choices": [
+        "TRENO",
+        "LIBRO",
+        "PESCE"
+      ],
+      "word": "TRENO"
+    }
+  ],
+  "49": [
+    {
+      "type": "picture-context",
+      "picture": "matita",
+      "display": "Uso la _____.",
+      "correct": "MATITA",
+      "choices": [
+        "MATITA",
+        "CHIAVE",
+        "MAGLIA"
+      ],
+      "word": "MATITA"
+    }
+  ],
+  "50": [
+    {
+      "type": "picture-context",
+      "picture": "lettera",
+      "display": "Scrivo una _____.",
+      "correct": "LETTERA",
+      "choices": [
+        "LETTERA",
+        "DOMANDA",
+        "PAROLA"
+      ],
+      "word": "LETTERA"
+    }
+  ],
+  "51": [
+    {
+      "type": "picture-context",
+      "picture": "bici",
+      "display": "Vado in _____.",
+      "correct": "BICI",
+      "choices": [
+        "BICI",
+        "AUTO",
+        "TAXI"
+      ],
+      "word": "BICI"
+    }
+  ],
+  "52": [
+    {
+      "type": "picture-context",
+      "picture": "bicchiere",
+      "display": "Bevo dal _____.",
+      "correct": "BICCHIERE",
+      "choices": [
+        "BICCHIERE",
+        "TELEFONO",
+        "QUADERNO"
+      ],
+      "word": "BICCHIERE"
+    }
+  ],
+  "53": [
+    {
+      "type": "picture-context",
+      "picture": "negozio",
+      "display": "Entro nel _____.",
+      "correct": "NEGOZIO",
+      "choices": [
+        "NEGOZIO",
+        "TEATRO",
+        "GIARDINO"
+      ],
+      "word": "NEGOZIO"
+    }
+  ],
+  "54": [
+    {
+      "type": "picture-context",
+      "picture": "calendario",
+      "display": "Controllo il _____.",
+      "correct": "CALENDARIO",
+      "choices": [
+        "CALENDARIO",
+        "COMPUTER",
+        "TELEFONO"
+      ],
+      "word": "CALENDARIO"
+    }
+  ],
+  "55": [
+    {
+      "type": "picture-context",
+      "picture": "calendario",
+      "display": "Segno la data sul _____.",
+      "correct": "CALENDARIO",
+      "choices": [
+        "CALENDARIO",
+        "COMPUTER",
+        "QUADERNO"
+      ],
+      "word": "CALENDARIO"
+    }
+  ],
+  "56": [
+    {
+      "type": "picture-context",
+      "picture": "telefono",
+      "display": "Rispondo al _____.",
+      "correct": "TELEFONO",
+      "choices": [
+        "TELEFONO",
+        "COMPUTER",
+        "QUADERNO"
+      ],
+      "word": "TELEFONO"
+    }
+  ],
+  "57": [
+    {
+      "type": "picture-context",
+      "picture": "valigia",
+      "display": "Preparo la _____.",
+      "correct": "VALIGIA",
+      "choices": [
+        "VALIGIA",
+        "MAGLIA",
+        "LETTERA"
+      ],
+      "word": "VALIGIA"
+    }
+  ],
+  "58": [
+    {
+      "type": "picture-context",
+      "picture": "quaderno",
+      "display": "Compilo il _____.",
+      "correct": "QUADERNO",
+      "choices": [
+        "QUADERNO",
+        "BIGLIETTO",
+        "TELEFONO"
+      ],
+      "word": "QUADERNO"
+    }
+  ],
+  "59": [
+    {
+      "type": "picture-context",
+      "picture": "albero",
+      "display": "Nel parco c'è un _____.",
+      "correct": "ALBERO",
+      "choices": [
+        "ALBERO",
+        "SEDILE",
+        "POZZO"
+      ],
+      "word": "ALBERO"
+    }
+  ],
+  "60": [
+    {
+      "type": "picture-context",
+      "picture": "libro",
+      "display": "Prendo un _____.",
+      "correct": "LIBRO",
+      "choices": [
+        "LIBRO",
+        "TRENO",
+        "PESCE"
+      ],
+      "word": "LIBRO"
+    }
+  ]
+});
+
 export function pictogramPath(name){
  const item=PICTOGRAMS[name];
  return item?new URL("../assets/pictograms/"+item.filename,import.meta.url).href:null;
 }
 export function pictureActivitiesFor(unit,random=Math.random){
- const items=PICTURE_PRACTICE[Number(unit)]||[];
- return items.map(item=>{
-   const options=[...item.choices];
-   if(options.length!==3||new Set(options).size!==3||!options.includes(item.correct))throw Error("Scelte pittogrammi: "+unit);
-   if(!PICTOGRAMS[item.picture])throw Error("Pittogramma sconosciuto: "+item.picture);
-   for(const icon of options)if(item.type==="picture-listen"||item.type==="picture-meaning")if(!PICTOGRAMS[icon])throw Error("Pittogramma non disponibile: "+icon);
-   for(let i=options.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[options[i],options[j]]=[options[j],options[i]];}
-   return {...item,choices:options,prompt:item.type==="picture-listen"?"Ascolta e tocca il disegno.":item.type==="picture-meaning"?"Leggi e scegli il disegno.":"Guarda il disegno e completa."};
+ const list=PICTURE_PRACTICE[Number(unit)]||[];
+ return list.map(item=>{
+  if(!PICTOGRAMS[item.picture])throw Error("Pittogramma mancante: "+item.picture);
+  if(new Set(item.choices).size!==3||!item.choices.includes(item.correct))throw Error("Alternative errate in U"+unit);
+  const choices=[...item.choices];
+  for(let i=choices.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[choices[i],choices[j]]=[choices[j],choices[i]];}
+  const prompt=item.type==="picture-match"?"Ascolta e trova il disegno.":item.type==="picture-context"?"Completa la frase guardando il disegno.":"Completa la parola guardando il disegno.";
+  return {...item,choices,prompt};
  });
 }
