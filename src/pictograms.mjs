@@ -45,7 +45,7 @@ export const PICTOGRAMS=Object.freeze({
     "alt": "Un autobus"
   },
   "bici": {
-    "filename": "bici.svg",
+    "filename": "bike.svg",
     "alt": "Una bicicletta"
   },
   "computer": {
