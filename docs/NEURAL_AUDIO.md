@@ -1,4 +1,4 @@
-# Audio neurale di Traccia — Piper italiano
+# Audio neurale di MATITA — Piper italiano
 
 ## Come funziona
 L’app preferisce un pacchetto di MP3 sintetizzati con **Piper / it_IT-paola-medium**. Il modello viene scaricato e usato solo da **GitHub Actions** per costruire il sito; non viene eseguito, installato né scaricato sul telefono. Non si richiedono registrazioni del docente.
@@ -7,7 +7,7 @@ I testi sono raccolti dalle 60 unità, dalle consegne, dalle domande di comprens
 
 Il lettore `src/neural-audio.mjs` carica `audio/generated/manifest.json`, cerca una corrispondenza esatta (ignorando maiuscole e spazi ripetuti) e, al tocco, riproduce il relativo MP3. Se la clip non esiste, il caricamento fallisce o il manifest non è ancora disponibile, il lettore richiama il TTS del dispositivo. Anche sul telefono in assenza di collegamento internet, solo le clip già in cache sono garantite dalla logica PWA: **il primo caricamento di tutti gli MP3 non è garantito offline**.
 
-**Attenzione alla fonetica:** i singoli grafemi consonantici NON vengono presentati come fonemi generati artificialmente. Con Piper le sillabe e alcune parole possono avere errori di prosodia o lettura; ascoltare campioni e correggere o rimuovere i file errati prima di usare l'app in modo autonomo.
+**Attenzione alla fonetica:** i singoli grafemi consonantici NON vengono presentati come fonemi generati artificialmente. Con Piper le sillabe e alcune parole possono avere errori di prosodia o lettura; ascoltare campioni e correggere o rimuovere i file errati prima di usare l'app senza supervisione.
 
 ## Preparazione alla pubblicazione — un’azione nelle impostazioni
 GitHub Pages attualmente potrebbe essere impostato su **Deploy from a branch**. Il workflow introdotto qui usa invece **GitHub Actions** per pubblicare sito e audio insieme.
