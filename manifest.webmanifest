@@ -1,0 +1,19 @@
+{
+  "name": "m_app — Leggere e scrivere",
+  "short_name": "m_app",
+  "description": "Percorso di lettura, scrittura e attività sul quaderno",
+  "lang": "it",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f4f0",
+  "theme_color": "#f5f4f0",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
