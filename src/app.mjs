@@ -192,6 +192,8 @@ function unitView(main){
   const stage=el("section","stage");
   if(task.type==="visual")visualStage(stage,task);
   if(task.type==="picture-letter"||task.type==="picture-syllable")pictureStage(stage,task);
+  if(task.type==="picture-listen")pictureListenStage(stage,task);
+  if(task.type==="picture-meaning")pictureMeaningStage(stage,task);
   if(task.type==="listen")listenStage(stage,task);
   if(task.type==="complete")completeStage(stage,task);
   if(task.type==="typing")typingStage(stage,task);
@@ -247,6 +249,53 @@ function listenStage(stage,task){
   stage.append(audioButton(task.readout,task.readout.length>24?"sentence":"word"));
   stage.append(el("div","audio-spacer"));
   choiceButtons(stage,task);
+  audioAlert(stage);
+}
+function pictogramElement(name,small=false){
+  const img=el("img",small?"picture-option-icon":"pictogram-asset");
+  const url=pictogramPath(name);
+  if(url)img.src=url;
+  img.alt=PICTOGRAMS[name]?.alt||name;
+  img.loading="eager";img.decoding="async";
+  return img;
+}
+function pictogramChoices(stage,task){
+  const grid=el("div","picture-options");
+  grid.setAttribute("role","group");
+  grid.setAttribute("aria-label","Scegli un disegno");
+  for(const value of task.choices){
+    const b=btn("","picture-choice",()=>pick(task,value),{aria:PICTOGRAMS[value]?.alt||value});
+    b.append(pictogramElement(value,true));
+    if(ui.feedback&&ui.feedback.value===value)b.classList.add(ui.feedback.correct||ui.feedback.revealed?"right":"wrong");
+    b.disabled=ui.answered;grid.append(b);
+  }
+  stage.append(grid);
+  if(ui.feedback){
+    const feedback=el("div","simple-feedback "+(ui.feedback.correct?"ok":"again"));
+    append(feedback,icon(ui.feedback.correct?"check":"retry",28),
+      el("span",null,ui.feedback.correct?"CORRETTO":ui.feedback.revealed?"GUARDA IL DISEGNO":"RIPROVA"));
+    stage.append(feedback);
+    if(!ui.feedback.correct&&ui.tries>=2&&!ui.feedback.revealed){
+      stage.append(btn("MOSTRA","soft-action",()=>{
+        ui.feedback={value:task.correct,correct:false,revealed:true};
+        ui.answered=true;activeSave();render();
+      },{ico:"eye"}));
+    }
+  }
+  if(ui.answered)stage.append(btn("AVANTI","primary next-btn",advance,{ico:"next"}));
+}
+function pictureListenStage(stage,task){
+  // L'ascolto, non la lettura, è il requisito delle attività visive iniziali.
+  const spoken=PICTOGRAMS[task.picture]?.spoken||PICTOGRAMS[task.picture]?.alt||task.picture;
+  stage.append(audioButton("Tocca il disegno: "+spoken,"instruction"));
+  stage.append(el("div","picture-listening-cue"));
+  pictogramChoices(stage,task);
+  audioAlert(stage);
+}
+function pictureMeaningStage(stage,task){
+  stage.append(audioButton("Leggi la frase e tocca il disegno giusto.","instruction"));
+  stage.append(target(task.display,"long picture-sentence"));
+  pictogramChoices(stage,task);
   audioAlert(stage);
 }
 function pictureStage(stage,task){
