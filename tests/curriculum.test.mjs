@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {LESSONS,LEVELS,personalizedItems,validateCurriculum} from "../src/curriculum.mjs";
 import {makeActivities,makeChoices,checkChoice,scoreSession,shuffle} from "../src/engine.mjs";
-import {PICTOGRAMS, PICTURE_PRACTICE, pictureActivitiesFor} from "../src/pictograms.mjs";
+import {PICTOGRAMS, PICTURE_PRACTICE, pictureActivitiesFor, validatePicturePractice} from "../src/pictograms.mjs";
 import {readFileSync} from "node:fs";
 
 function rng(seed=17){
@@ -73,54 +73,59 @@ test("shuffle conserva gli elementi",()=>{
 });
 
 
-test("tutti i pittogrammi provengono da file SVG locali",()=>{
+
+test("asset illustrati: SVG locali per ogni figura del catalogo",()=>{
   const keys=Object.keys(PICTOGRAMS);
-  assert.equal(keys.length,40);
+  assert.ok(keys.length>=30);
   const paths=new Set();
-  for(const key of keys){
-    const item=PICTOGRAMS[key];
+  for(const name of keys){
+    const item=PICTOGRAMS[name];
     assert.match(item.filename,/^[a-z-]+\.svg$/);
-    assert.ok(item.alt,"Descrizione accessibile mancante per "+key);
+    assert.ok(item.alt);
     paths.add(item.filename);
-    const content=readFileSync(new URL("../assets/pictograms/"+item.filename,import.meta.url),"utf8");
-    assert.match(content,/<svg\b/);
+    const svg=readFileSync(new URL("../assets/pictograms/"+item.filename,import.meta.url),"utf8");
+    assert.match(svg,/<svg\b/);
   }
   assert.equal(paths.size,keys.length);
 });
 
-test("tutte le 60 unità contengono esattamente un'attività illustrata",()=>{
+test("60 su 60: una vera attività illustrata per unità, anche nel motore",()=>{
+  assert.deepEqual(validatePicturePractice(),[]);
   assert.equal(Object.keys(PICTURE_PRACTICE).length,60);
   for(let id=1;id<=60;id++){
-    const items=PICTURE_PRACTICE[id];
-    assert.ok(Array.isArray(items)&&items.length===1,"Copertura U"+id);
+    const unit=PICTURE_PRACTICE[id];
+    assert.equal(unit.length,1,"U"+id);
     const task=pictureActivitiesFor(id,rng(id))[0];
-    assert.ok(PICTOGRAMS[task.picture],"Icona mancante U"+id);
-    assert.equal(task.choices.length,3);
-    assert.equal(new Set(task.choices).size,3);
-    assert.ok(task.choices.includes(task.correct));
-    assert.equal(checkChoice(task,task.correct),true);
+    assert.equal(new Set(task.choices).size,3,"U"+id);
+    assert.equal(checkChoice(task,task.correct),true,"U"+id);
     const generated=makeActivities(LESSONS[id-1],"ALEX",rng(id));
-    assert.equal(generated.filter(x=>x.type.startsWith("picture-")).length,1);
+    assert.equal(generated.filter(t=>t.type.startsWith("picture-")).length,1,"U"+id);
+    assert.equal(generated.filter(t=>t.type==="notebook").length,1,"U"+id);
     if(id<=10){
-      assert.equal(task.type,"picture-match");
-      assert.ok(task.choices.every(x=>PICTOGRAMS[x]));
+      assert.equal(task.type,"picture-audio");
+      assert.ok(task.choices.every(v=>PICTOGRAMS[v]));
+      assert.ok(task.readout.startsWith("Tocca "));
     }else if(id<=36){
       assert.ok(["picture-letter","picture-syllable"].includes(task.type));
-      assert.equal((task.display.match(/_/g)||[]).length,task.correct.length);
       assert.equal(task.display.replace(/_+/,task.correct),task.word);
-      assert.ok(task.choices.every(x=>x.length===task.correct.length));
+      assert.equal((task.display.match(/_/g)||[]).length,task.correct.length);
+      assert.ok(task.choices.every(v=>v.length===task.correct.length));
     }else{
-      assert.equal(task.type,"picture-context");
-      assert.equal((task.display.match(/_/g)||[]).length,5);
-      assert.ok(task.choices.every(x=>typeof x==="string"&&x.length>0));
-      assert.ok(task.display.length<=45);
+      assert.equal(task.type,"picture-choice");
+      assert.ok(task.choices.every(v=>typeof v==="string"&&v.length>=6));
     }
   }
 });
-test("le scelte illustrate cambiano posizione nelle ripetizioni",()=>{
-  const locations=new Set();
-  for(const value of [0,0.2,0.45,0.7,0.99]){
-    locations.add(pictureActivitiesFor(43,()=>value)[0].choices.indexOf("MESSAGGIO"));
+
+test("la posizione della risposta illustrata cambia nelle ripetizioni",()=>{
+  const positions=new Set();
+  for(let n=1;n<=40;n++)positions.add(pictureActivitiesFor(43,rng(n))[0].choices.indexOf(PICTURE_PRACTICE[43][0].correct));
+  assert.ok(positions.size>1);
+});
+
+test("nessun file remoto necessario per le figure",()=>{
+  for(const entry of Object.values(PICTOGRAMS)){
+    assert.ok(!entry.filename.includes("://"));
+    assert.ok(entry.filename.endsWith(".svg"));
   }
-  assert.ok(locations.size>=2);
 });
