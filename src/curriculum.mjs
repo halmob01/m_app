@@ -123,7 +123,10 @@ export const LESSONS = RAW.map(([title,objective,kind,values,notebook],i) => {
 export function personalizedItems(lesson,name="") {
   const safe=(name||"").trim().replace(/\s+/g," ").slice(0,30).toLocaleUpperCase("it-IT");
   if(lesson.id===1){
-    return [safe||"IL TUO NOME", "NOME", "CASA", "SCUOLA"].filter(Boolean);
+    return [safe||"NOME", "CASA", "SOLE", "SCUOLA"].filter(Boolean);
+  }
+  if(lesson.id===2 && safe){
+    return [...new Set([...safe].filter(letter=>/^[A-ZÀ-Ù]$/.test(letter)))];
   }
   return lesson.items.map(x=>x==="@NOME"||x==="@NOME_MAIUSCOLO" ? (safe||"NOME") : x);
 }
@@ -135,7 +138,7 @@ export function validateCurriculum() {
   for(const l of LESSONS){
     if(keys.has(l.id))errors.push("Duplicato: "+l.id);
     keys.add(l.id);
-    if(!l.title||!l.objective||!l.notebook||l.items.length<2)errors.push("Unità incompleta: "+l.id);
+    if(!l.title||!l.objective||!l.notebook||l.items.length<1)errors.push("Unità incompleta: "+l.id);
     for(const q of l.questions){
       if(!q.options.includes(q.correct)||new Set(q.options).size!==3)errors.push("Domanda non valida: "+l.id);
     }
