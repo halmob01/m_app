@@ -111,7 +111,7 @@ export function makeActivities(lesson,name="",random=Math.random) {
 }
 
 export function checkChoice(activity,answer) {
-  if(!["visual","listen","complete","comprehension","typing","picture-letter","picture-syllable","picture-listen","picture-meaning","picture-match","picture-context"].includes(activity?.type))return null;
+  if(!["visual","listen","complete","comprehension","typing","picture-letter","picture-syllable","picture-listen","picture-meaning","picture-match","picture-context","picture-audio","picture-choice"].includes(activity?.type))return null;
   return normalized(answer)===normalized(activity.correct);
 }
 
