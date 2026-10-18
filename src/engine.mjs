@@ -61,6 +61,8 @@ export function makeActivities(lesson,name="",random=Math.random) {
     // Nei primi livelli la figura si associa alla parola ascoltata, senza richiedere lettura.
     arr.push(...pictureActivitiesFor(lesson.id,random));
     if(lesson.id===1)arr.push({type:"read",prompt:"Leggi il tuo nome.",display:usable[0],readout:usable[0],correct:null,choices:[]});
+    // Esercizio orale con figure, prima che la decodifica sia accessibile.
+    arr.push(...pictureActivitiesFor(lesson.id,random));
     arr.push({type:"notebook",prompt:lesson.notebook,readout:null,correct:null});
     return arr;
   }
