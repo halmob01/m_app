@@ -20,6 +20,8 @@ function collect(text){
 [
   "Premi inizia per fare gli esercizi.",
   "Tocca la parola uguale.",
+  "Guarda il disegno. Scegli la lettera o la sillaba che manca.",
+  "Guarda il disegno. Scegli la frase giusta.",
   "Leggi da solo. Quando hai provato, tocca il pulsante avanti.",
   "Oggi sono a scuola. Leggo una parola e poi scrivo sul quaderno."
 ].forEach(collect);
@@ -41,6 +43,7 @@ for(const lesson of LESSONS){
     for(const task of makeActivities(lesson,"",random)){
       if(task.type==="listen"||task.type==="complete"||task.type==="read"||task.type==="typing")collect(task.readout);
       if(task.type==="notebook")collect(task.prompt);
+      if(task.type==="picture-audio")collect(task.readout);
       if(task.type==="comprehension")collect("Leggi il testo. "+task.prompt);
     }
   }
