@@ -81,8 +81,13 @@ L'interfaccia ora può riprodurre **MP3 neurali Piper/Paola generati automaticam
 
 Manuale completo, licenze e verifica fonetica: [docs/NEURAL_AUDIO.md](docs/NEURAL_AUDIO.md).
 
-## Pittogrammi per lettere e sillabe
-Le unità 11, 12, 13, 19, 21, 24, 32 e 37 includono un piccolo numero di esercizi visivi **immagine + lettera/sillaba mancante**. Sono utilizzati **10 SVG originali di Tabler Icons (licenza MIT)**, conservati localmente e disponibili nella cache offline. Il catalogo è in `src/pictograms.mjs`, la guida e attribuzione in `docs/PICTOGRAMS.md` e la licenza in `assets/pictograms/LICENSE`. Gli esercizi illustrati sono pratica assistita, non certificano la decodifica senza immagine.
+## Pittogrammi nelle 60 unità e redesign TRACCIA
+Ogni unità U01–U60 contiene **un'attività visuale** graduata, realizzata con **40 pittogrammi SVG Tabler Icons** conservati localmente sotto licenza MIT. La voce approvata resta invariata.
 
-## Redesign e pittogrammi in 60 unità
-Da questa versione, **tutte le unità U01–U60** comprendono almeno un'attività illustrata. La sezione studente ha una palette calda, carte più riconoscibili, voce prominente e tre scelte grandi; l'area docente conserva la mappa dettagliata dei livelli. La voce approvata non è stata modificata. Sono presenti **45 asset SVG locali Tabler Icons (MIT)**, con licenza originale in `assets/pictograms/LICENSE` e cache offline v6. Le attività illustrate non sostituiscono quelle di lettura indipendente. Progetto, criteri e riferimento a getdesign.md in [docs/DESIGN_ILLUSTRATED.md](docs/DESIGN_ILLUSTRATED.md).
+- U01–U10: ascolto e selezione tra tre disegni, senza richiedere lettura.
+- U11–U36: una lettera o una sillaba mancante, con un pittogramma di supporto.
+- U37–U60: breve frase funzionale e parola mancante con contesto visivo.
+
+Lettura autonoma e attività sul quaderno continuano a essere proposte senza indizi illustrati. L'interfaccia dello studente mostra soprattutto il livello, il pulsante di ascolto e le risposte grandi; i dettagli restano nell'area docente.
+
+Il redesign utilizza **Anton** e **Manrope**, superfici calde, navy e verde tenue, ispirandosi alla gerarchia visiva di design esaminati su [getdesign.md](https://getdesign.md/). Tutte le scelte e gli anti-pattern sono documentati in [DESIGN.md](DESIGN.md). Catalogo e linee guida di attribuzione in [docs/PICTOGRAMS.md](docs/PICTOGRAMS.md), testo MIT in [assets/pictograms/LICENSE](assets/pictograms/LICENSE). Gli asset usati dall'app sono inclusi nella cache della PWA **v8**.
