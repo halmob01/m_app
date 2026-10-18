@@ -1,6 +1,6 @@
 {
-  "name": "m_app — Leggere e scrivere",
-  "short_name": "m_app",
+  "name": "Traccia — Leggere e scrivere",
+  "short_name": "Traccia",
   "description": "Percorso di lettura, scrittura e attività sul quaderno",
   "lang": "it",
   "start_url": "./",
