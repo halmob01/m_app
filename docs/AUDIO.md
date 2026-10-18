@@ -1,11 +1,11 @@
-# Audio senza registrazioni: decisione per m_app
+# Audio senza registrazioni: decisione per MATITA
 
 Il docente NON deve registrare suoni o parole. Nessun servizio esterno a pagamento.
 
 ## MVP: sintesi vocale del dispositivo
 Usiamo Web Speech API (speechSynthesis e SpeechSynthesisUtterance), con lingua it-IT, preferenza per una voce italiana e attivazione mediante tocco. Serve per vocali, sillabe pronunciate naturalmente, parole, frasi, consegne e dettati. L'app non invia esplicitamente le parole a un servizio vocale; il browser o il sistema operativo possono utilizzare servizi propri per generare le voci. Non serve un account API dell'app. La disponibilità offline e la voce effettiva dipendono dal telefono: verificare sul dispositivo.
 
-L'interfaccia tiene separati: istruzione parlata, lettura guidata, lettura autonoma e dettato. Per la lettura autonoma NON pronuncia la parola prima del tentativo; per i dettati nasconde la parola durante l'ascolto; audio sempre manuale con pulsante «Ascolta».
+L'interfaccia tiene separati: istruzione parlata, lettura guidata, lettura senza suggerimenti e dettato. Per la lettura senza suggerimenti NON pronuncia la parola prima del tentativo; per i dettati nasconde la parola durante l'ascolto; audio sempre manuale con pulsante «Ascolta».
 
 ## Distinzione fonetica essenziale
 Pronunciare la lettera M come «emme» non equivale a insegnare il fonema /m/. Non usare TTS diretto di lettere consonantiche isolate per presentare i suoni.
