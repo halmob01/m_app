@@ -18,7 +18,7 @@ function unique(items) {
 }
 
 const SYLLABLE_POOL=["MA","ME","MI","MO","MU","NA","NE","NI","NO","NU","LA","LE","LI","LO","LU","SA","SE","SI","SO","SU","PA","PE","PI","PO","PU","TA","TE","TI","TO","TU","RA","RE","RI","RO","RU","FA","FE","FI","FO","FU","BA","BE","BI","BO","BU","DA","DE","DI","DO","DU","VA","VE","VI","VO","VU","CA","CO","CU","GA","GO","GU","CE","CI","GE","GI","CHE","CHI","GHE","GHI","QUA","SCE","SCI","PRA","TRA","BRA","SPA","STA","SCA"];
-const READING_POOL=LESSONS.filter(l=>l.id>=37).flatMap(l=>l.items);
+const READING_POOL=LESSONS.filter(l=>l.id>=37).flatMap(l=>l.items.flatMap(item=>[item,...item.split(/(?<=[.!?])\s+/).map(s=>s.trim()).filter(Boolean)]));
 const WORD_POOL=["MANO","MELA","LUNA","SOLE","NASO","LAMA","MULO","MIMO","SALE","PANE","PALA","TANA","TELA","MARE","RANA","FARO","FILO","FUMO","PAROLA","LIMONE","SAPONE","PATATA","DADO","BENE","VELA","VINO","CASA","CANE","COSA","GOLA","GARA","CENA","CIMA","VOCE","GELATO","GIRA","GENTE","CHIAVE","GHIRO","QUANDO","ACQUA","SPESA","POSTO","PRATO","TRENO","SCENA","BAGNO","SOGNO","FOGLIO","PALA","PALLA","NONO","NONNO","CASSA"];
 
 export function makeChoices(correct, pool, random=Math.random, count=3) {
@@ -50,7 +50,8 @@ export function makeActivities(lesson,name="",random=Math.random) {
   const arr=[];
   const early=lesson.id<=36;
   const usable=shuffle(terms,random);
-  const picks=usable.slice(0,Math.min(3,usable.length));
+  const audioTerms=!early ? unique(terms.flatMap(t=>t.split(/(?<=[.!?])\s+/).map(s=>s.trim()).filter(Boolean))) : terms;
+  const picks=shuffle(audioTerms,random).slice(0,Math.min(3,audioTerms.length));
   if(lesson.kind==="visual"){
     for(const word of picks){
       arr.push({type:"visual",prompt:"Trova lo stesso segno.",display:word,
@@ -77,7 +78,7 @@ export function makeActivities(lesson,name="",random=Math.random) {
     }
   }
   if(lesson.id>=11){
-    const typed=usable.find(x=>x.length>=3);
+    const typed=usable.find(x=>x.length>=3&&x.length<=(early?20:45));
     if(typed)arr.push({type:"typing",prompt:early?"Scrivi la parola ascoltata.":"Scrivi la frase ascoltata.",display:null,readout:typed,correct:typed,choices:[]});
   }
   arr.push({
