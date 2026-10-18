@@ -22,7 +22,7 @@ function collect(text){
   "Tocca la parola uguale.",
   "Guarda il disegno. Scegli la lettera o la sillaba che manca.",
   "Guarda il disegno. Scegli la frase giusta.",
-  "Leggi da solo. Quando hai provato, tocca il pulsante avanti.",
+  "Prova a leggere. Poi premi avanti.",
   "Oggi sono a scuola. Leggo una parola e poi scrivo sul quaderno."
 ].forEach(collect);
 

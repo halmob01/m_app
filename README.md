@@ -1,4 +1,4 @@
-# m_app — Leggere e scrivere
+# MATITA — Leggere e scrivere
 
 Web app leggera per un percorso di **alfabetizzazione iniziale di un adolescente**, che alterna smartphone e **quaderno cartaceo**. Design sobrio; nessuna mascotte, classifica, suono automatico o registrazione richiesta al docente.
 
@@ -21,7 +21,7 @@ Web app leggera per un percorso di **alfabetizzazione iniziale di un adolescente
 5. Quando appare «Quaderno», alternare copia e richiamo dalla memoria, nascondendo il modello e ascoltando il dettato.
 6. Nell'area docente controllare il quaderno reale; il «completato» dello studente non è una certificazione di correttezza.
 
-La lettura iniziale è autonoma: prima il tentativo, poi il controllo con audio; è un'autovalutazione e non una misurazione della decodifica. La padronanza digitale orientativa richiede due sessioni almeno all'85% e una lettura dichiarata autonoma; la verifica docente rimane distinta.
+Nelle prove di lettura lo studente prova prima a leggere, poi ascolta per confrontare la propria risposta; l'autovalutazione non sostituisce la verifica del docente. I criteri orientativi per la parte digitale prevedono due sessioni almeno all'85% e un tentativo di lettura prima del suggerimento audio; la scrittura sul quaderno viene controllata separatamente.
 
 ## Eseguire in locale
 
@@ -81,13 +81,13 @@ L'interfaccia ora può riprodurre **MP3 neurali Piper/Paola generati automaticam
 
 Manuale completo, licenze e verifica fonetica: [docs/NEURAL_AUDIO.md](docs/NEURAL_AUDIO.md).
 
-## Pittogrammi nelle 60 unità e redesign TRACCIA
+## Pittogrammi nelle 60 unità e redesign MATITA
 Ogni unità U01–U60 contiene **un'attività visuale** graduata, realizzata con **33 pittogrammi SVG Tabler Icons** conservati localmente sotto licenza MIT. La voce approvata resta invariata.
 
 - U01–U10: ascolto e selezione tra tre disegni, senza richiedere lettura.
 - U11–U36: una lettera o una sillaba mancante, con un pittogramma di supporto.
 - U37–U60: breve frase funzionale e parola mancante con contesto visivo.
 
-Lettura autonoma e attività sul quaderno continuano a essere proposte senza indizi illustrati. L'interfaccia dello studente mostra soprattutto il livello, il pulsante di ascolto e le risposte grandi; i dettagli restano nell'area docente.
+Le prove di lettura e le attività sul quaderno continuano a essere proposte anche senza indizi illustrati. L'interfaccia dello studente mostra soprattutto il livello, il pulsante di ascolto e le risposte grandi; i dettagli restano nell'area docente.
 
 Il redesign utilizza **Anton** e **Manrope**, superfici calde, navy e verde tenue, ispirandosi alla gerarchia visiva di design esaminati su [getdesign.md](https://getdesign.md/). Tutte le scelte e gli anti-pattern sono documentati in [DESIGN.md](DESIGN.md). Catalogo e linee guida di attribuzione in [docs/PICTOGRAMS.md](docs/PICTOGRAMS.md), testo MIT in [assets/pictograms/LICENSE](assets/pictograms/LICENSE). Gli asset usati dall'app sono inclusi nella cache della PWA **v6**.

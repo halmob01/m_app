@@ -3,15 +3,15 @@
 ## Destinatario e finalità
 Percorso di alfabetizzazione iniziale, destinato a un adolescente di scuola secondaria che comprende consegne orali ma ha notevoli difficoltà di lettura e scrittura. Non presume una diagnosi, né deduce il livello cognitivo dalla grafia. Contenuti e visual identity devono essere rispettosi dell'età (17 anni), con lessico della vita quotidiana, della scuola, dei trasporti, delle relazioni e del lavoro.
 
-**Traguardo di lungo periodo:** leggere in autonomia messaggi e brevi testi funzionali, ricavarne informazioni esplicite e scrivere frasi e brevi testi comprensibili su quaderno. I tempi sono individuali: 60 unità costituiscono un repertorio progressivo, non una promessa di completamento in 60 lezioni.
+**Traguardo di lungo periodo:** leggere e comprendere messaggi e brevi testi funzionali, ricavarne informazioni esplicite e scrivere frasi e brevi testi comprensibili sul quaderno. I tempi sono individuali: 60 unità costituiscono un repertorio progressivo, non una promessa di completamento in 60 lezioni.
 
 **Durata consigliata:** unità da 20–25 minuti, ripetibili su più incontri; sessioni brevi e frequenti (4–5 volte a settimana quando possibile). Alternare telefono e quaderno, pause e recupero. Nessun vincolo a completare una lezione in una seduta.
 
 ## Valutazione iniziale, prima della U01
-Accertare: riconoscimento di nome proprio e vocali; corrispondenza grafema–suono; discriminazione di sillabe; fusione di sillabe; lettura di parole note/nuove; comprensione orale; comprensione di frasi scritte; scrittura su copia/dettato/autonoma; impugnatura, pressione, affaticamento, motricità; utilizzo del telefono. Distinguere **decodifica**, **comprensione** e **motricità grafica**. Per attività nuove, prevedere modello didattico dell'adulto. Condividere obiettivi con docenti e PEI ove pertinente.
+Accertare: riconoscimento di nome proprio e vocali; corrispondenza grafema–suono; discriminazione di sillabe; fusione di sillabe; lettura di parole note/nuove; comprensione orale; comprensione di frasi scritte; scrittura su copia, dettato e produzione di frasi; impugnatura, pressione, affaticamento, motricità; utilizzo del telefono. Distinguere **decodifica**, **comprensione** e **motricità grafica**. Per attività nuove, prevedere modello didattico dell'adulto. Condividere obiettivi con docenti e PEI ove pertinente.
 
 ## Architettura di ogni unità (telefono + quaderno)
-1. **Recupero (2–3 min):** 2–3 elementi acquisiti in precedenza; senza aiuto audio quando l'obiettivo è lettura autonoma.
+1. **Recupero (2–3 min):** 2–3 elementi acquisiti in precedenza; senza suggerimento audio quando l'obiettivo è verificare la lettura di parole scritte.
 2. **Modello (3–4 min):** breve istruzione visiva/orale su nuovo grafema, sillaba o struttura; docente quando necessario.
 3. **Telefono (5–7 min):** 4–8 item graduati: ascolta/individua, abbina grafema–sillaba, componi parola, leggi e rispondi. Difficoltà e distrattori bilanciati.
 4. **Quaderno (5–7 min):** copia significativa (1–3 occorrenze), completamento, dettato o produzione; la ricopiatura ripetitiva non sostituisce la memoria.
@@ -121,7 +121,7 @@ Introdurre **CE/CI, GE/GI; CHE/CHI, GHE/GHI; QU; H**. Evitare di trattare l'inte
 | U48 | Testo di 3 frasi | Trova persona, luogo, azione; domanda letterale | Risposte brevi scritte, senza copiare tutto il testo |
 
 ## Livello 9 — Scrittura guidata di testi brevi (U49–U54)
-**Obiettivo:** passare da modelli a produzioni più autonome; non valutare solo ortografia.
+**Obiettivo:** passare dalla scrittura con modello alla composizione di frasi e brevi testi; non valutare solo ortografia.
 
 | Unità | Nucleo | Telefono | Quaderno |
 |---|---|---|---|
@@ -132,7 +132,7 @@ Introdurre **CE/CI, GE/GI; CHE/CHI, GHE/GHI; QU; H**. Evitare di trattare l'inte
 | U53 | Descrivere un luogo | Scuola, quartiere, stanza | Tre frasi con modello visivo |
 | U54 | Revisione | Rileggi, aggiungi spazi, punto, parola mancante | Correggi un testo proprio con checklist |
 
-## Livello 10 — Autonomia nella lettura e nella scrittura (U55–U60)
+## Livello 10 — Leggere e scrivere testi brevi (U55–U60)
 **Obiettivo:** comprendere e produrre testi brevi in contesti reali, con progressiva diminuzione degli aiuti.
 
 | Unità | Nucleo | Telefono | Quaderno |
@@ -155,7 +155,7 @@ Introdurre **CE/CI, GE/GI; CHE/CHI, GHE/GHI; QU; H**. Evitare di trattare l'inte
 - L'educatore può scegliere percorso ridotto, saltare unità già padroneggiate, usare più incontri per la stessa unità; nessuna progressione automatica basata solo sul tempo.
 
 ## Criteri di qualità dei contenuti prima del rilascio
-Ogni unità deve avere: prerequisiti espliciti; inventario grafemi insegnati; lessico controllato; 4–8 item telefono; 1–3 micro-attività quaderno; 1 verifica indipendente; testi non infantilizzanti; correttezza ortografica; metadati di audio; soluzioni e distrattori revisionati; indicazioni su cosa l'insegnante deve controllare.
+Ogni unità deve avere: prerequisiti espliciti; inventario grafemi insegnati; lessico controllato; 4–8 item telefono; 1–3 micro-attività quaderno; 1 verifica di lettura senza suggerimenti; testi non infantilizzanti; correttezza ortografica; metadati di audio; soluzioni e distrattori revisionati; indicazioni su cosa l'insegnante deve controllare.
 
 Qualsiasi parola introdotta con grafemi ancora non insegnati va dichiarata come **parola funzionale globale** (es. SEGNALE) e non usata per misurare la decodifica sistematica.
 

@@ -109,7 +109,7 @@ summary {cursor:pointer; font-weight:650;}
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .progress>div {transition:none;} }
 
 
-/* Traccia — interfaccia studente essenziale, mappa e dettagli solo nel pannello docente. */
+/* Matita — interfaccia studente essenziale, mappa e dettagli solo nel pannello docente. */
 
 :root{font-family:"Manrope",system-ui,sans-serif;--accent:#334c72}
 .shell{max-width:900px}.pupil-shell{max-width:680px}
@@ -322,7 +322,7 @@ html,body,button,input {font-family:"Manrope",-apple-system,BlinkMacSystemFont,"
 .level-title,.display-title,.wordmark,.teacher-title,.brandmark,.map-index {font-family:"Anton",Impact,sans-serif;}
 
 
-/* TRACCIA / studio refresh 02: getdesign.md references
+/* MATITA / studio refresh 02: getdesign.md references
    - Lovable warm-paper surface, Mobbin selective high-contrast control language.
    - Never add reading burden to the pupil interface. */
 :root{--bg:#f5f2eb;--paper:#fffefa;--accent:#234563;--signal:#fed887;}
@@ -386,4 +386,35 @@ body{background:var(--bg);color:#192637;}
 }
 @media(prefers-reduced-motion:reduce){
   .pupil-home::before,.pupil-home::after{animation:none;}
+}
+
+/* MATITA — M grande in alto a destra, come iniziale del nome.
+   Il comando dell'area docente rimane separato e discreto a sinistra. */
+.pupil-topbar .student-monogram{
+  margin-left:auto;
+  width:52px;
+  height:52px;
+  flex-shrink:0;
+  border-radius:17px;
+  display:grid;
+  place-items:center;
+  color:#fffefa;
+  background:#193752;
+  font-family:"Anton",Impact,sans-serif;
+  font-size:37px;
+  line-height:1;
+  letter-spacing:0;
+  box-shadow:0 3px 0 #d0d6d6;
+}
+.pupil-topbar .teacher-visible-link{
+  order:-1;
+  margin-right:auto;
+  font-size:12px;
+  min-height:46px;
+  padding:10px 12px;
+}
+.pupil-topbar .teacher-visible-link svg{width:17px;height:17px;}
+@media(max-width:385px){
+ .pupil-topbar .student-monogram{height:47px;width:47px;font-size:33px;}
+ .pupil-topbar .teacher-visible-link{font-size:11px;padding:9px;}
 }
