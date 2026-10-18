@@ -8,7 +8,7 @@ Percorso di alfabetizzazione iniziale, destinato a un adolescente di scuola seco
 **Durata consigliata:** unità da 20–25 minuti, ripetibili su più incontri; sessioni brevi e frequenti (4–5 volte a settimana quando possibile). Alternare telefono e quaderno, pause e recupero. Nessun vincolo a completare una lezione in una seduta.
 
 ## Valutazione iniziale, prima della U01
-Accertare: riconoscimento di nome proprio e vocali; corrispondenza grafema–suono; discriminazione di sillabe; fusione di sillabe; lettura di parole note/nuove; comprensione orale; comprensione di frasi scritte; scrittura su copia/dettato/autonoma; impugnatura, pressione, affaticamento, motricità; utilizzo del telefono. Distinguere **decodifica**, **comprensione** e **motricità grafica**. Per attività nuove, prevedere modello didattico dell'adulto. Condividere obiettivi con docenti e PEI ove pertinente.
+Accertare: riconoscimento di nome proprio e vocali; corrispondenza grafema–suono; discriminazione di sillabe; fusione di sillabe; lettura di parole note/nuove; comprensione orale; comprensione di frasi scritte; scrittura su copia, dettato e produzione di frasi; impugnatura, pressione, affaticamento, motricità; utilizzo del telefono. Distinguere **decodifica**, **comprensione** e **motricità grafica**. Per attività nuove, prevedere modello didattico dell'adulto. Condividere obiettivi con docenti e PEI ove pertinente.
 
 ## Architettura di ogni unità (telefono + quaderno)
 1. **Recupero (2–3 min):** 2–3 elementi acquisiti in precedenza; senza suggerimento audio quando l'obiettivo è verificare la lettura di parole scritte.
