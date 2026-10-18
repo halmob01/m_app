@@ -165,3 +165,11 @@ summary {cursor:pointer; font-weight:650;}
 .teacher-score{font-size:12px;color:#246748;font-weight:800}.sound-error{color:#96452f;text-align:center;font-size:14px}
 @media(min-width:600px){.choices{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:480px){.teacher-lesson{flex-direction:column;align-items:stretch}.teacher-lesson-actions{flex-direction:row;flex-wrap:wrap}.teacher-lesson-actions button{flex:1}}
+
+
+.teacher-visible-link{display:inline-flex;align-items:center;gap:7px;min-height:48px;border:1px solid #c7cdd4;border-radius:11px;padding:10px 13px;background:#fff;color:#334c72;font-size:13px;font-weight:800;letter-spacing:.02em}
+.teacher-visible-link svg{width:19px;height:19px}
+.voice-settings{margin-top:25px;padding-top:18px;border-top:1px solid #e0e3e6;display:flex;flex-direction:column;gap:11px}
+.voice-settings h3{font-size:18px;margin:0}
+.voice-settings .teacher-input{font-family:inherit}
+.voice-settings button{align-self:flex-start}
