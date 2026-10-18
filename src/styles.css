@@ -173,3 +173,8 @@ summary {cursor:pointer; font-weight:650;}
 .voice-settings h3{font-size:18px;margin:0}
 .voice-settings .teacher-input{font-family:inherit}
 .voice-settings button{align-self:flex-start}
+
+/* Pittogrammi reali Tabler Icons: asset SVG locali, senza immagini generate. */
+.pictogram-frame{display:grid;place-items:center;min-height:165px;padding:16px;background:#f4f5f4;border:1px solid #e1e4e5;border-radius:17px;}
+.pictogram-asset{display:block;width:clamp(125px,34vw,184px);height:clamp(125px,34vw,184px);object-fit:contain;color:#222d38;}
+.target.pictogram-target{font-size:clamp(35px,10vw,59px);padding:17px 12px;letter-spacing:.12em;}

@@ -1,4 +1,5 @@
 import { personalizedItems, LESSONS } from "./curriculum.mjs";
+import { pictureActivitiesFor } from "./pictograms.mjs";
 
 export function shuffle(items, random=Math.random) {
   const result=[...items];
@@ -71,6 +72,8 @@ export function makeActivities(lesson,name="",random=Math.random) {
       readout:word
     });
   }
+  // Mini-esercizi immagine + grafema/sillaba: solo unità e parole già insegnate.
+  arr.push(...pictureActivitiesFor(lesson.id,random));
   if(early){
     for(const term of shuffle(terms.filter(x=>x.length>=3),random).slice(0,2)){
       const activity=completeItem(term,terms,random);
@@ -104,7 +107,7 @@ export function makeActivities(lesson,name="",random=Math.random) {
 }
 
 export function checkChoice(activity,answer) {
-  if(!["visual","listen","complete","comprehension","typing"].includes(activity?.type))return null;
+  if(!["visual","listen","complete","comprehension","typing","picture-letter","picture-syllable"].includes(activity?.type))return null;
   return normalized(answer)===normalized(activity.correct);
 }
 
