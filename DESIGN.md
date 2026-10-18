@@ -1,7 +1,7 @@
-# TRACCIA — DESIGN.md (v2)
+# MATITA — DESIGN.md (v3)
 
 ## Intento
-Piccolo redesign editoriale dell'app di alfabetizzazione, senza modificare la voce già approvata né l'architettura delle 60 unità. Target: adolescente che non può leggere istruzioni lunghe. Interfaccia mobile, non infantile. **Il design deve ridurre il carico cognitivo, non aggiungere decorazione.**
+Identità visiva MATITA e piccolo redesign dell'app per leggere e scrivere, senza modificare la voce già approvata né l'architettura delle 60 unità. Target: adolescente che non può leggere istruzioni lunghe. Interfaccia mobile, non infantile. **Il design deve ridurre il carico cognitivo, non aggiungere decorazione.**
 
 ## Riferimenti visitati su getdesign.md
 - [Apple](https://getdesign.md/design-md/apple): economia visiva, respiro e gerarchia delle azioni. Non adottare la sua tipografia di sistema per il brand, perché il progetto ha già una coppia approvata.
@@ -18,8 +18,8 @@ Piccolo redesign editoriale dell'app di alfabetizzazione, senza modificare la vo
 - Disegni: SVG riconoscibili, dimensioni coerenti, non trasformarli in illustrazioni caricaturali. Non aggiungere foto stock o AI generata.
 - Movimento: microtransizioni solo su pressione/feedback; `prefers-reduced-motion` rispettato. Non serve motion scroll.
 - Accessibilità: contrasto elevato, target touch grandi, focus evidente, testo alternativo per pittogrammi, pulsanti non identificati solo dal colore.
-- Audio: pulsante esplicito. La voce neurale già presente non viene cambiata. Nessun audio che anticipi la soluzione in prove autonome.
-- Prove: l'immagine è un **supporto**. Lettura autonoma e scrittura sul quaderno continuano senza indizi visivi. Le frasi in livelli 7–10 sono brevi, funzionali e non vincolano la verifica della decodifica. Gli esercizi U01–U10 sono invece di riconoscimento orale fra tre immagini, senza richiesta di lettura.
+- Audio: pulsante esplicito. La voce neurale già presente non viene cambiata. Nessun audio che anticipi la soluzione nei compiti di lettura da verificare.
+- Prove: l'immagine è un **supporto**. Lettura senza indizi visivi e scrittura sul quaderno rimangono parte del percorso. Le frasi in livelli 7–10 sono brevi, funzionali e non vincolano la verifica della decodifica. Gli esercizi U01–U10 sono invece di riconoscimento orale fra tre immagini, senza richiesta di lettura.
 
 ## Anti-pattern
 Blocchi di testo nello schermo studente, barre di navigazione affollate, classifica/mascotte, espressioni infantili, tappeti di icone, bottoni sotto 48 px, risposte corrette riconoscibili dalla lunghezza o da un disegno ambiguo.
