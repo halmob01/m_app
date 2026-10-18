@@ -83,3 +83,6 @@ Manuale completo, licenze e verifica fonetica: [docs/NEURAL_AUDIO.md](docs/NEURA
 
 ## Pittogrammi per lettere e sillabe
 Le unità 11, 12, 13, 19, 21, 24, 32 e 37 includono un piccolo numero di esercizi visivi **immagine + lettera/sillaba mancante**. Sono utilizzati **10 SVG originali di Tabler Icons (licenza MIT)**, conservati localmente e disponibili nella cache offline. Il catalogo è in `src/pictograms.mjs`, la guida e attribuzione in `docs/PICTOGRAMS.md` e la licenza in `assets/pictograms/LICENSE`. Gli esercizi illustrati sono pratica assistita, non certificano la decodifica senza immagine.
+
+## Redesign e pittogrammi in 60 unità
+Da questa versione, **tutte le unità U01–U60** comprendono almeno un'attività illustrata. La sezione studente ha una palette calda, carte più riconoscibili, voce prominente e tre scelte grandi; l'area docente conserva la mappa dettagliata dei livelli. La voce approvata non è stata modificata. Sono presenti **45 asset SVG locali Tabler Icons (MIT)**, con licenza originale in `assets/pictograms/LICENSE` e cache offline v6. Le attività illustrate non sostituiscono quelle di lettura indipendente. Progetto, criteri e riferimento a getdesign.md in [docs/DESIGN_ILLUSTRATED.md](docs/DESIGN_ILLUSTRATED.md).
