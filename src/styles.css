@@ -316,3 +316,7 @@ body {
 @media(prefers-reduced-motion:reduce){
   .choice,.picture-choice,.primary{transition:none;transform:none;}
 }
+
+/* Preserve the approved typographic pairing throughout all controls. */
+html,body,button,input {font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+.level-title,.display-title,.wordmark,.teacher-title,.brandmark,.map-index {font-family:"Anton",Impact,sans-serif;}
