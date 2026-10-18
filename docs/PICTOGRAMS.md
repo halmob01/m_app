@@ -1,4 +1,4 @@
-# Pittogrammi in tutte le 60 unità — TRACCIA
+# Pittogrammi in tutte le 60 unità — MATITA
 
 ## Provenienza
 Gli SVG sono **asset già esistenti di Tabler Icons** (https://tabler.io/icons), disponibili con licenza **MIT**. Non sono immagini generate con IA né illustrazioni create a mano. Sono copiati localmente nella cartella `assets/pictograms/`. L'attribuzione e la licenza integrale si trovano in `assets/pictograms/LICENSE`. Le icone arrivano dal catalogo sorgente `tabler/tabler-icons/icons/outline/`.
@@ -13,7 +13,7 @@ La prima banca attiva contiene **33 pittogrammi** con gli stessi tratti grafici,
 | U11–U36 | `picture-letter` / `picture-syllable` | Guarda un oggetto; completa una lettera o un gruppo nella parola | Rinforzo di grafemi e sillabe; alcune sono revisioni di parole già apprese |
 | U37–U60 | `picture-choice` | Guarda l'immagine; seleziona la frase che la descrive | Lettura funzionale e riconoscimento semantico, con distrattori plausibili |
 
-La regola obbligatoria è **almeno una attività illustrata per ciascuna delle 60 unità**, verificata automaticamente nel test del sillabo. L'immagine non viene inserita in ogni singolo esercizio: lettura autonoma e quaderno mantengono prove prive di indizi iconografici.
+La regola obbligatoria è **almeno una attività illustrata per ciascuna delle 60 unità**, verificata automaticamente nel test del sillabo. L'immagine non viene inserita in ogni singolo esercizio: lettura e quaderno mantengono anche prove prive di indizi iconografici.
 
 Gli esercizi con figura non valgono da soli come prova di padronanza della lettura. Una figura potrebbe permettere di indovinare senza decodificare; per questo rimangono compiti senza figura.
 
