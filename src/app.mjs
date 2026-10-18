@@ -142,7 +142,7 @@ function render(){
       btn("TORNA AGLI ESERCIZI","teacher-back",gotoStudent,{ico:"back"}));
   }else{
     append(header,el("span","brandmark","T"),
-      btn("","icon-btn teacher-entry",gotoTeacher,{ico:"settings",aria:"Area docente"}));
+      btn("DOCENTI","teacher-visible-link",gotoTeacher,{ico:"settings",aria:"Apri area docenti"}));
   }
   const main=el("main");main.id="main";
   if(ui.view==="teacher")teacherView(main);
