@@ -90,12 +90,12 @@ function render(){
   else if(current.view==="done")doneScreen(main);
   else if(current.view==="teacher")teacherScreen(main);
   else if(current.view==="profile")profileScreen(main);
-  const footer=e("footer","footer","Progressi salvati sul dispositivo. Nessun account o servizio esterno. Il quaderno richiede la verifica di un adulto.");
+  const footer=e("footer","footer","Progressi salvati nel browser. Nessun server dell’app. Il quaderno richiede la verifica di un adulto.");
   add(shell,header,main,footer);root.append(shell);
 }
 function setup(main){
   add(main,heading("Benvenuto","Un passo alla volta.","Impara a leggere e scrivere. Userai il telefono e anche il quaderno."));
-  const c=card(e("h2",null,"Prima di iniziare"),note("Puoi scrivere solo il tuo nome, se vuoi. Rimane su questo dispositivo e non viene inviato a nessuno."));
+  const c=card(e("h2",null,"Prima di iniziare"),note("Puoi scrivere solo il tuo nome, se vuoi. È salvato solo nel browser. L’eventuale lettura vocale è gestita dal dispositivo."));
   const label=e("label",null,"Nome (facoltativo)");
   label.htmlFor="name";
   const input=e("input","field");input.id="name";input.autocomplete="off";input.maxLength=30;input.placeholder="Il tuo nome";input.value=data.profile.name||"";
