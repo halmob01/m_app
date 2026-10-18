@@ -1,6 +1,6 @@
 /* Static shell cache; no student data is cached in the service worker. */
-const CACHE="m_app_static_v4";
-const SHELL=["./","./index.html","./src/styles.css","./src/app.mjs","./src/engine.mjs","./src/neural-audio.mjs","./src/curriculum.mjs","./icon.svg","./manifest.webmanifest"];
+const CACHE="m_app_static_v5";
+const SHELL=["./","./index.html","./src/styles.css","./src/app.mjs","./src/engine.mjs","./src/pictograms.mjs","./src/neural-audio.mjs","./src/curriculum.mjs","./icon.svg","./manifest.webmanifest","./assets/pictograms/mela.svg","./assets/pictograms/mano.svg","./assets/pictograms/sole.svg","./assets/pictograms/luna.svg","./assets/pictograms/pane.svg","./assets/pictograms/casa.svg","./assets/pictograms/cane.svg","./assets/pictograms/dado.svg","./assets/pictograms/treno.svg","./assets/pictograms/libro.svg"];
 self.addEventListener("install",event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));
 });
