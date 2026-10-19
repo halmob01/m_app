@@ -537,11 +537,6 @@ function teacherView(main){
     }
     section.append(list);main.append(section);
   }
-  const last=el("section","teacher-panel");
-  append(last,el("h2",null,"Indicazioni didattiche"),el("p",null,"La mappa segue il sillabo dal riconoscimento delle lettere ai brevi testi. Il livello è una scelta didattica del docente, non una diagnosi. Evita di saltare una unità soltanto perché il punteggio digitale risulta alto."),
-    el("p",null,"Le consegne sul quaderno sono pronunciate dall’app, ma la calligrafia e la comprensione vanno valutate da un adulto."),
-    el("p",null,"Il nome e i progressi vengono salvati nel browser del dispositivo; esporta un backup se necessario. Le voci del sistema operativo possono dipendere dai servizi del fornitore."));
-  main.append(last);
 }
 function exportProgress(){
   const payload=new Blob([JSON.stringify({schema:1,exportedAt:new Date().toISOString(),...data},null,2)],{type:"application/json"});
