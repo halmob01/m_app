@@ -1,0 +1,36 @@
+MATITA - VERSIONE OFFLINE COMPLETA
+
+Contiene 60 unità, pittogrammi SVG e la voce italiana Piper in MP3.
+Non serve Internet durante l'utilizzo. Non include dati degli studenti.
+
+WINDOWS
+1. Estrai l'intera cartella MATITA_OFFLINE dallo ZIP.
+2. Apri AVVIA_WINDOWS.bat (non aprire direttamente sito/index.html).
+3. Si apre il browser all'indirizzo http://127.0.0.1:8765/.
+4. Lascia aperta la finestra nera durante la lezione.
+5. Se Windows blocca gli script, chiedi l'autorizzazione al tecnico scolastico.
+
+MAC/LINUX
+Estrai l'intera cartella, poi esegui AVVIA_MAC_LINUX.command.
+Occorre Python 3 preinstallato; in alternativa: python3 avvia_python.py
+
+DATI E CONDIVISIONE
+I progressi sono salvati nel browser del singolo PC. Non vengono inviati a server.
+Il profilo non passa da un computer all'altro.
+Ogni PC va avviato dalla propria copia della cartella.
+Non copiare lo ZIP mentre il contenuto e' ancora compresso.
+Non serve connessione, GitHub, login o installazione di modelli AI.
+
+AUDIO
+Il pacchetto contiene clip Piper preregistrate da sintesi automatica.
+Una frase personalizzata non presente nel catalogo potrebbe usare la voce
+preinstallata sul computer: la qualità del fallback dipende dal browser.
+Per garantire anche le istruzioni di base, il pacchetto viene costruito
+soltanto dopo aver verificato la presenza di tutto l'inventario generato.
+
+FONT
+Usa il font di sistema se Anton e Manrope non sono installati.
+I font non impediscono l'uso degli esercizi.
+
+ASSISTENZA
+Repository: https://github.com/halmob01/m_app
