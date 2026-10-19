@@ -76,13 +76,14 @@ jobs:
           assert all((pathlib.Path("audio/generated")/name).stat().st_size>300 for name in data["clips"].values())
           print("Validated audio clips:",len(data["clips"]))
           PY
-      - name: Stage static site with packaged MP3s
-        if: github.event_name != 'pull_request'
+      - name: Stage static site with packaged MP3s and pictograms
         run: |
           mkdir -p _site/src _site/audio
           cp index.html icon.svg manifest.webmanifest sw.js .nojekyll _site/
           cp src/*.mjs src/styles.css _site/src/
+          cp -r assets _site/
           cp -r audio/generated _site/audio/
+          node scripts/verify-pages-assets.mjs _site
       - name: Configure GitHub Pages
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
