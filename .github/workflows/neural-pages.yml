@@ -84,6 +84,22 @@ jobs:
           cp -r assets _site/
           cp -r audio/generated _site/audio/
           node scripts/verify-pages-assets.mjs _site
+      - name: Build complete offline ZIP
+        if: github.event_name != 'pull_request'
+        run: |
+          python scripts/build-offline-package.py \
+            --site _site \
+            --inventory audio/inventory.json \
+            --launchers offline \
+            --output dist/MATITA_OFFLINE.zip
+      - name: Upload complete offline ZIP
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: MATITA_OFFLINE
+          path: dist/MATITA_OFFLINE.zip
+          if-no-files-found: error
+          retention-days: 90
       - name: Configure GitHub Pages
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
